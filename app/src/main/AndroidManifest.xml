@@ -12,6 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImpackLink">
         <activity
+            android:name=".SignUpActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Main_Login"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity_user_agreement"
+            android:exported="false" />
+        <activity
             android:name=".GetStartedActivity"
             android:exported="true">
             <intent-filter>

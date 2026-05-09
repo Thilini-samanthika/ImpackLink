@@ -2,16 +2,18 @@ package com.example.impacklink
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class GetStartedActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_get_started)
+        setContentView(R.layout.activity_login)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -19,11 +21,8 @@ class GetStartedActivity : AppCompatActivity() {
             insets
         }
 
-        val btnNext = findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.btnNext)
-
-        btnNext.setOnClickListener {
-            val intent = Intent(this, activity_user_agreement::class.java)
-            startActivity(intent)
+        val btnLogin = findViewById<AppCompatButton>(R.id.btnLogin)
+        btnLogin.setOnClickListener {
         }
     }
 }
