@@ -22,7 +22,7 @@ class GetStartedActivity : AppCompatActivity() {
         val btnNext = findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.btnNext)
 
         btnNext.setOnClickListener {
-            val intent = Intent(this, activity_user_agreement::class.java)
+            val intent = Intent(this, UserAgreementActivity::class.java)
             startActivity(intent)
         }
     }

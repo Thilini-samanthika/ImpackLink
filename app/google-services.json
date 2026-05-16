@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "306886541612",
+    "project_id": "impacklink",
+    "storage_bucket": "impacklink.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306886541612:android:b0ebb0b69fcc6e87062c89",
+        "android_client_info": {
+          "package_name": "com.example.impacklink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFdzFE4ugxE48gfo8RCC3Ftjrhe5Hy6Fg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,85 +6,72 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0D1163">
+    android:background="#0D1163"> <!-- තද නිල් පාට පසුබිම -->
 
-    <!-- Logo -->
+    <!-- Logo එක -->
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:src="@drawable/app_logo"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- White Curved Box -->
+    <!-- සුදු පාට වක්‍ර හැඩැති පසුබිම -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="402dp"
+        android:layout_height="357dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/curved_background"
-        android:padding="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_text">
+        app:layout_constraintVertical_bias="0.145"
+        tools:layout_editor_absoluteX="4dp">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Let’s get started!"
+            android:layout_marginTop="50dp"
+            android:text="Let's get started!"
             android:textColor="#000000"
-            android:textSize="30sp"
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:layout_marginTop="30dp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Login Button -->
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/tvDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
             android:text="Login to your account below or create new account for a good experince."
-            android:textAlignment="center"
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
+        <!-- Login බටන් එක -->
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogin"
+            android:id="@+id/gslogin"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/button_gradient"
             android:text="Have you an account? Login"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/description"
-            tools:layout_editor_absoluteX="16dp" />
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+            tools:layout_editor_absoluteX="40dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Bottom Sign Up Link -->
-    <TextView
-        android:id="@+id/bottom_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="Don’t have an account? Create account"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

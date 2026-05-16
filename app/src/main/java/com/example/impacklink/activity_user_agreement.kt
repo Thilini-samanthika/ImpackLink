@@ -9,25 +9,29 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-
-class activity_user_agreement : AppCompatActivity() {
+class UserAgreementActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_user_agreement)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        val mainView = findViewById<android.view.View>(R.id.user_agreement_main)
+        if (mainView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+                insets
+            }
         }
 
         val btnAgree = findViewById<Button>(R.id.btnAgree)
         val checkDonation = findViewById<CheckBox>(R.id.checkDonation)
 
+        // මුලින් බටන් එක disable කර තැබීම
         btnAgree.isEnabled = false
         btnAgree.alpha = 0.5f
 
+        // Checkbox එක ක්ලික් කළ විට බටන් එක active කිරීම
         checkDonation.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 btnAgree.isEnabled = true
@@ -38,8 +42,9 @@ class activity_user_agreement : AppCompatActivity() {
             }
         }
 
+        // Agree බටන් එක එබූ විට Main Login පිටුවට යාම
         btnAgree.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, MainLoginActivity::class.java)
             startActivity(intent)
             finish()
         }
