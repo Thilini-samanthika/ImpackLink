@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImpackLink">
         <activity
+            android:name=".NgoDashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".notification_center"
             android:exported="false" />
         <activity

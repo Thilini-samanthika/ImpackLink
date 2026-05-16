@@ -19,7 +19,7 @@ class NotificationCenterActivity : AppCompatActivity() {
         val notificationList = listOf(
             NotificationModel("ngo notification", R.drawable.ic_message, "education for all", "hope foundation", "apply"),
             NotificationModel("volunteer notification", R.drawable.ic_check, "community clean up", "green earth NGO", "apply"),
-            ... // මෙතනට තවත් ඔයාට කැමති notifications දාන්න පුළුවන්
+             // මෙතනට තවත් ඔයාට කැමති notifications දාන්න පුළුවන්
         )
 
         val adapter = NotificationAdapter(notificationList)
