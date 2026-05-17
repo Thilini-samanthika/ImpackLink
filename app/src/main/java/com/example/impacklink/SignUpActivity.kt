@@ -2,73 +2,75 @@ package com.example.impacklink
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.google.firebase.auth.FirebaseAuth
+import com.example.impacklink.api.AuthResponse
+import com.example.impacklink.api.RegisterRequest
+import com.example.impacklink.api.RetrofitClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_sign_up)
-        auth = FirebaseAuth.getInstance()
 
-
+        val etName = findViewById<EditText>(R.id.etName)
         val etEmail = findViewById<EditText>(R.id.etEmailSignUp)
         val etPassword = findViewById<EditText>(R.id.etPasswordSignUp)
+        val etMobile = findViewById<EditText>(R.id.etMobile)
+        val etAbout = findViewById<EditText>(R.id.etAbout)
+        val spinnerRole = findViewById<Spinner>(R.id.spinnerRoleSignUp)
+        val etAccountHolder = findViewById<EditText>(R.id.etAccountHolder)
+        val etAccountNumber = findViewById<EditText>(R.id.etAccountNumber)
         val btnSignUp = findViewById<AppCompatButton>(R.id.btnSignUp)
         val tvSignIn = findViewById<TextView>(R.id.tvSignIn)
 
+        // Set up Spinner
+        val roles = arrayOf("NGO", "VOLUNTEER", "DONOR")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, roles)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerRole.adapter = adapter
+
         btnSignUp.setOnClickListener {
+            val name = etName.text.toString().trim()
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
+            val mobile = etMobile.text.toString().trim()
+            val about = etAbout.text.toString().trim()
+            val role = spinnerRole.selectedItem.toString()
+            val holder = etAccountHolder.text.toString().trim()
+            val accNo = etAccountNumber.text.toString().trim()
 
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                auth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            val user = auth.currentUser
-                            user?.sendEmailVerification()?.addOnCompleteListener { emailTask ->
-                                if (emailTask.isSuccessful) {
-                                    Toast.makeText(this, "Account Created! Verification email sent.", Toast.LENGTH_LONG).show()
-
-                                    val intent = Intent(this, VerifyActivity::class.java)
-                                    startActivity(intent)
-                                    finish()
-                                }
-                            }
+            if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+                val request = RegisterRequest(name, email, password, mobile, about, role, holder, accNo)
+                
+                RetrofitClient.instance.register(request).enqueue(object : Callback<AuthResponse> {
+                    override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+                        if (response.isSuccessful && response.body()?.status == "success") {
+                            Toast.makeText(this@SignUpActivity, "Registration Successful!", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this@SignUpActivity, MainLoginActivity::class.java))
+                            finish()
                         } else {
-                            Toast.makeText(this, "Sign Up Failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@SignUpActivity, response.body()?.message ?: "Error", Toast.LENGTH_LONG).show()
                         }
                     }
+
+                    override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+                        Toast.makeText(this@SignUpActivity, "Network Error: ${t.message}", Toast.LENGTH_LONG).show()
+                    }
+                })
             } else {
-                Toast.makeText(this, "Please enter all details", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Name, Email, and Password are required", Toast.LENGTH_SHORT).show()
             }
         }
 
         tvSignIn.setOnClickListener {
-            val intent = Intent(this, MainLoginActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainLoginActivity::class.java))
             finish()
-        }
-
-        // System bars padding
-        val mainView = findViewById<android.view.View>(R.id.main)
-        if (mainView != null) {
-            ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
-            }
         }
     }
 }

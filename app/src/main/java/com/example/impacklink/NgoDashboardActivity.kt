@@ -36,12 +36,12 @@ class NgoDashboardActivity : AppCompatActivity() {
         }
 
         layoutAllProject.setOnClickListener {
-            val intent = Intent(this, ProjectAnalysisActivity::class.java) // Changed from NgoViewProjectActivity
+            val intent = Intent(this, NgoViewProjectActivity::class.java) 
             startActivity(intent)
         }
 
         layoutImpactAnalysis.setOnClickListener {
-            val intent = Intent(this, ProjectAnalysisActivity::class.java) // ඔයාගේ Project Analysis පිටුවේ නම
+            val intent = Intent(this, ProjectAnalysisActivity::class.java)
             startActivity(intent)
         }
 
@@ -59,7 +59,8 @@ class NgoDashboardActivity : AppCompatActivity() {
         }
 
         ivProfileSettings.setOnClickListener {
-
+            val intent = Intent(this, NgoProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 }

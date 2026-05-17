@@ -235,8 +235,9 @@
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:backgroundTint="#3B82F6"
+                android:background="@drawable/button_gradient"
                 android:layout_marginTop="30dp"
+                app:backgroundTint="@null"
                 app:layout_constraintTop_toBottomOf="@+id/et_account_number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
