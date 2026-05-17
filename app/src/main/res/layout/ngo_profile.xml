@@ -73,7 +73,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:padding="6dp"
-                    android:src="@drawable/ic_verfied1"
+                    android:src="@drawable/ic_verified1" />
             </FrameLayout>
 
             <TextView
@@ -95,8 +95,7 @@
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@drawable/ic_verified1
-"
+                    android:src="@drawable/ic_verified1"
                     app:tint="#1A1F71" />
 
                 <TextView
@@ -179,7 +178,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_manager"
+                    android:src="@drawable/ic_profile_user"
                     app:tint="@color/black" />
 
                 <LinearLayout

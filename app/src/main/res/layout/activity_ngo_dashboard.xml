@@ -111,7 +111,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_paddingHorizontal="10dp">
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
                 <ImageView
                     android:id="@+id/iv_bell"
                     android:layout_width="45dp"
@@ -131,6 +132,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/layout_all_project_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#D1ECF1"
@@ -232,6 +234,7 @@
             </LinearLayout>
 
             <RelativeLayout
+                android:id="@+id/layout_impact_analysis_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#D1ECF1"
@@ -305,7 +308,6 @@
             android:src="@drawable/ic_apps"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_of="@+id/ivDocument"
             app:layout_constraintStart_toEndOf="@+id/ivDocument"
             app:layout_constraintEnd_toStartOf="@+id/ivProfileSettings" />
 

@@ -27,11 +27,9 @@ class UserAgreementActivity : AppCompatActivity() {
         val btnAgree = findViewById<Button>(R.id.btnAgree)
         val checkDonation = findViewById<CheckBox>(R.id.checkDonation)
 
-        // මුලින් බටන් එක disable කර තැබීම
         btnAgree.isEnabled = false
         btnAgree.alpha = 0.5f
 
-        // Checkbox එක ක්ලික් කළ විට බටන් එක active කිරීම
         checkDonation.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 btnAgree.isEnabled = true
@@ -42,7 +40,6 @@ class UserAgreementActivity : AppCompatActivity() {
             }
         }
 
-        // Agree බටන් එක එබූ විට Main Login පිටුවට යාම
         btnAgree.setOnClickListener {
             val intent = Intent(this, MainLoginActivity::class.java)
             startActivity(intent)

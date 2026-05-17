@@ -1,24 +1,46 @@
 package com.example.impacklink
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class RoleSelectionActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_role_selection)
 
-        val mainView = findViewById<android.view.View>(R.id.main)
-        if (mainView != null) {
-            ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
-            }
+        val btnNgo = findViewById<Button>(R.id.btnNgo)
+        val btnVolunteer = findViewById<Button>(R.id.btnVolunteer)
+        val btnDonor = findViewById<Button>(R.id.btnDonor)
+        val btnCompany = findViewById<Button>(R.id.btnCompany)
+        val ivProfile = findViewById<ImageView>(R.id.ivProfile)
+
+        btnNgo.setOnClickListener {
+            val intent = Intent(this, NgoDashboardActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnVolunteer.setOnClickListener {
+            // val intent = Intent(this, VolunteerDashboardActivity::class.java)
+            // startActivity(intent)
+        }
+
+        btnDonor.setOnClickListener {
+            // val intent = Intent(this, DonorDashboardActivity::class.java)
+            // startActivity(intent)
+        }
+
+        btnCompany.setOnClickListener {
+            // val intent = Intent(this, CompanyDashboardActivity::class.java)
+            // startActivity(intent)
+        }
+
+        ivProfile.setOnClickListener {
+            val intent = Intent(this, ProfileSettingsActivity::class.java)
+            startActivity(intent)
         }
     }
 }

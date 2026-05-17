@@ -156,7 +156,6 @@
             android:src="@drawable/ic_menu_grid"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_of="@+id/ivHome"
             app:layout_constraintStart_toEndOf="@+id/ivHome"
             app:layout_constraintEnd_toStartOf="@+id/ivProfileSettings" />
 
