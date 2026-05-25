@@ -50,17 +50,23 @@ class SignUpActivity : AppCompatActivity() {
                 
                 RetrofitClient.instance.register(request).enqueue(object : Callback<AuthResponse> {
                     override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
-                        if (response.isSuccessful && response.body()?.status == "success") {
-                            Toast.makeText(this@SignUpActivity, "Registration Successful!", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this@SignUpActivity, MainLoginActivity::class.java))
-                            finish()
+                        val authResponse = response.body()
+                        if (response.isSuccessful && authResponse != null) {
+                            if (authResponse.status == "success") {
+                                Toast.makeText(this@SignUpActivity, "Registration Successful!", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this@SignUpActivity, MainLoginActivity::class.java))
+                                finish()
+                            } else {
+                                Toast.makeText(this@SignUpActivity, "Signup Failed: ${authResponse.message}", Toast.LENGTH_LONG).show()
+                            }
                         } else {
-                            Toast.makeText(this@SignUpActivity, response.body()?.message ?: "Error", Toast.LENGTH_LONG).show()
+                            val errorMsg = response.errorBody()?.string() ?: "Unknown Server Error"
+                            Toast.makeText(this@SignUpActivity, "Server Error: $errorMsg", Toast.LENGTH_LONG).show()
                         }
                     }
 
                     override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                        Toast.makeText(this@SignUpActivity, "Network Error: ${t.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@SignUpActivity, "Network Failure: ${t.localizedMessage}. Check your server and internet connection.", Toast.LENGTH_LONG).show()
                     }
                 })
             } else {

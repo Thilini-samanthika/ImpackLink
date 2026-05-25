@@ -39,34 +39,40 @@ class MainLoginActivity : AppCompatActivity() {
                 
                 RetrofitClient.instance.login(request).enqueue(object : Callback<AuthResponse> {
                     override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
-                        if (response.isSuccessful && response.body()?.status == "success") {
-                            val user = response.body()?.user
-                            val role = user?.role ?: "NGO"
+                        val authResponse = response.body()
+                        if (response.isSuccessful && authResponse != null) {
+                            if (authResponse.status == "success") {
+                                val user = authResponse.user
+                                val role = user?.role ?: "NGO"
 
-                            // Trigger and Save Notification
-                            lifecycleScope.launch {
-                                val notification = NotificationEntity(
-                                    title = "Login Successful",
-                                    description = "You have successfully logged into your profile.",
-                                    role = role,
-                                    statusText = "Success",
-                                    iconType = "TICK"
-                                )
-                                database.notificationDao().insert(notification)
-                                
-                                Toast.makeText(this@MainLoginActivity, "Welcome ${user?.name}!", Toast.LENGTH_SHORT).show()
-                                
-                                val intent = Intent(this@MainLoginActivity, RoleSelectionActivity::class.java)
-                                startActivity(intent)
-                                finish()
+                                // Trigger and Save Notification
+                                lifecycleScope.launch {
+                                    val notification = NotificationEntity(
+                                        title = "Login Successful",
+                                        description = "You have successfully logged into your profile.",
+                                        role = role,
+                                        statusText = "Success",
+                                        iconType = "TICK"
+                                    )
+                                    database.notificationDao().insert(notification)
+                                    
+                                    Toast.makeText(this@MainLoginActivity, "Welcome ${user?.name ?: "User"}!", Toast.LENGTH_SHORT).show()
+                                    
+                                    val intent = Intent(this@MainLoginActivity, RoleSelectionActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                }
+                            } else {
+                                Toast.makeText(this@MainLoginActivity, "Login Failed: ${authResponse.message}", Toast.LENGTH_SHORT).show()
                             }
                         } else {
-                            Toast.makeText(this@MainLoginActivity, "Invalid Credentials", Toast.LENGTH_SHORT).show()
+                            val errorMsg = response.errorBody()?.string() ?: "Unknown Server Error"
+                            Toast.makeText(this@MainLoginActivity, "Server Error: $errorMsg", Toast.LENGTH_LONG).show()
                         }
                     }
 
                     override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                        Toast.makeText(this@MainLoginActivity, "Network Error: ${t.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@MainLoginActivity, "Network Failure: ${t.localizedMessage}. Check your server and internet connection.", Toast.LENGTH_LONG).show()
                     }
                 })
             } else {
