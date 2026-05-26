@@ -8,78 +8,221 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import com.example.impacklink.api.AuthResponse
 import com.example.impacklink.api.LoginRequest
 import com.example.impacklink.api.RetrofitClient
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainLoginActivity : AppCompatActivity() {
 
+    private lateinit var etEmail: EditText
+    private lateinit var etPassword: EditText
+    private lateinit var btnSignIn: AppCompatButton
+    private lateinit var tvForgotPassword: TextView
+    private lateinit var tvCreateAccount: TextView
+
+    private lateinit var database: AppDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_login)
 
-        val etEmail = findViewById<EditText>(R.id.etEmail)
-        val etPassword = findViewById<EditText>(R.id.etPassword)
-        val btnSignIn = findViewById<AppCompatButton>(R.id.btnSignIn)
-        val tvForgotPassword = findViewById<TextView>(R.id.tvForgotPassword)
-        val tvCreateAccount = findViewById<TextView>(R.id.tvCreateAccount)
+        initializeViews()
 
-        val database = AppDatabase.getDatabase(this)
+        database = AppDatabase.getDatabase(this)
+
+        // Signup walin awapu values auto fill karanawa
+        etEmail.setText(
+            intent.getStringExtra("email") ?: ""
+        )
+
+        etPassword.setText(
+            intent.getStringExtra("password") ?: ""
+        )
 
         btnSignIn.setOnClickListener {
+
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                val request = LoginRequest(email, password)
-                
-                RetrofitClient.instance.login(request).enqueue(object : Callback<AuthResponse> {
-                    override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
-                        if (response.isSuccessful && response.body()?.status == "success") {
-                            val user = response.body()?.user
-                            val role = user?.role ?: "NGO"
-
-                            // Trigger and Save Notification
-                            lifecycleScope.launch {
-                                val notification = NotificationEntity(
-                                    title = "Login Successful",
-                                    description = "You have successfully logged into your profile.",
-                                    role = role,
-                                    statusText = "Success",
-                                    iconType = "TICK"
-                                )
-                                database.notificationDao().insert(notification)
-                                
-                                Toast.makeText(this@MainLoginActivity, "Welcome ${user?.name}!", Toast.LENGTH_SHORT).show()
-                                
-                                val intent = Intent(this@MainLoginActivity, RoleSelectionActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                            }
-                        } else {
-                            Toast.makeText(this@MainLoginActivity, "Invalid Credentials", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
-                    override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                        Toast.makeText(this@MainLoginActivity, "Network Error: ${t.message}", Toast.LENGTH_LONG).show()
-                    }
-                })
-            } else {
-                Toast.makeText(this, "Please enter Email and Password", Toast.LENGTH_SHORT).show()
+            if (email.isEmpty()) {
+                etEmail.error = "Enter Email"
+                return@setOnClickListener
             }
+
+            if (password.isEmpty()) {
+                etPassword.error = "Enter Password"
+                return@setOnClickListener
+            }
+
+            loginUser(email, password)
         }
 
         tvForgotPassword.setOnClickListener {
-            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+            startActivity(
+                Intent(
+                    this,
+                    ForgotPasswordActivity::class.java
+                )
+            )
         }
 
         tvCreateAccount.setOnClickListener {
-            startActivity(Intent(this, SignUpActivity::class.java))
+            startActivity(
+                Intent(
+                    this,
+                    SignUpActivity::class.java
+                )
+            )
         }
+    }
+
+    private fun initializeViews() {
+
+        etEmail = findViewById(R.id.etEmail)
+        etPassword = findViewById(R.id.etPassword)
+        btnSignIn = findViewById(R.id.btnSignIn)
+        tvForgotPassword = findViewById(R.id.tvForgotPassword)
+        tvCreateAccount = findViewById(R.id.tvCreateAccount)
+
+    }
+
+    private fun loginUser(
+        email: String,
+        password: String
+    ) {
+
+        btnSignIn.isEnabled = false
+
+        val request = LoginRequest(
+            email,
+            password
+        )
+
+        RetrofitClient.instance.login(request)
+            .enqueue(object : Callback<AuthResponse> {
+
+                override fun onResponse(
+                    call: Call<AuthResponse>,
+                    response: Response<AuthResponse>
+                ) {
+
+                    btnSignIn.isEnabled = true
+
+                    if (response.isSuccessful) {
+
+                        val authResponse = response.body()
+
+                        if (authResponse?.status == "success") {
+
+                            val user = authResponse.user
+                            val role = user?.role ?: "NGO"
+
+                            lifecycleScope.launch {
+
+                                try {
+
+                                    // Save notification
+                                    val notification =
+                                        NotificationEntity(
+                                            title = "Login Successful",
+                                            description = "Successfully logged in",
+                                            role = role,
+                                            statusText = "Success",
+                                            iconType = "TICK"
+                                        )
+
+                                    database
+                                        .notificationDao()
+                                        .insert(notification)
+
+                                    // Save user profile
+                                    if (user != null) {
+                                        val profile = UserProfile(
+                                            name = user.name,
+                                            email = user.email,
+                                            mobile = user.mobile ?: "",
+                                            about = user.about ?: "",
+                                            role = role,
+                                            accountHolderName = user.account_holder ?: "",
+                                            accountNumber = user.account_number ?: ""
+                                        )
+
+                                        database.userProfileDao().insertOrUpdateProfile(profile)
+                                    }
+
+                                    Toast.makeText(
+                                        this@MainLoginActivity,
+                                        "Welcome ${user?.name ?: "User"}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
+                                    // Role selection ekata role pass karanawa
+                                    val intent =
+                                        Intent(
+                                            this@MainLoginActivity,
+                                            RoleSelectionActivity::class.java
+                                        )
+
+                                    intent.putExtra(
+                                        "role",
+                                        role
+                                    )
+
+                                    startActivity(intent)
+                                    finish()
+
+                                } catch (e: Exception) {
+
+                                    Toast.makeText(
+                                        this@MainLoginActivity,
+                                        "Database Error: ${e.message}",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }
+
+                            }
+
+                        } else {
+
+                            Toast.makeText(
+                                this@MainLoginActivity,
+                                authResponse?.message
+                                    ?: "Login Failed",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+
+                    } else {
+
+                        val errorMessage =
+                            response.errorBody()?.string()
+                                ?: "Unknown server error"
+
+                        Toast.makeText(
+                            this@MainLoginActivity,
+                            errorMessage,
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+
+                override fun onFailure(
+                    call: Call<AuthResponse>,
+                    t: Throwable
+                ) {
+
+                    btnSignIn.isEnabled = true
+
+                    Toast.makeText(
+                        this@MainLoginActivity,
+                        "Network Error : ${t.localizedMessage}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
     }
 }

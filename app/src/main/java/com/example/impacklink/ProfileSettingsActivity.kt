@@ -27,7 +27,7 @@ class ProfileSettingsActivity : AppCompatActivity() {
         layoutLogout.setOnClickListener {
             Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(this, splashpage::class.java)
+            val intent = Intent(this, SplashActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()

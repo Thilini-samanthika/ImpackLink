@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -24,26 +25,37 @@ class UserAgreementActivity : AppCompatActivity() {
             }
         }
 
-        val btnAgree = findViewById<Button>(R.id.btnAgree)
-        val checkDonation = findViewById<CheckBox>(R.id.checkDonation)
+        try {
+            val btnAgree = findViewById<Button>(R.id.btnAgree)
+            val checkDonation = findViewById<CheckBox>(R.id.checkDonation)
 
-        btnAgree.isEnabled = false
-        btnAgree.alpha = 0.5f
+            btnAgree.isEnabled = false
+            btnAgree.alpha = 0.5f
 
-        checkDonation.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                btnAgree.isEnabled = true
-                btnAgree.alpha = 1.0f
-            } else {
-                btnAgree.isEnabled = false
-                btnAgree.alpha = 0.5f
+            checkDonation.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    btnAgree.isEnabled = true
+                    btnAgree.alpha = 1.0f
+                } else {
+                    btnAgree.isEnabled = false
+                    btnAgree.alpha = 0.5f
+                }
             }
-        }
 
-        btnAgree.setOnClickListener {
-            val intent = Intent(this, MainLoginActivity::class.java)
-            startActivity(intent)
-            finish()
+            btnAgree.setOnClickListener {
+                try {
+                    val intent = Intent(this, MainLoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } catch (e: Exception) {
+                    // Manifest එකේ register කරලා නැත්නම් මේ Error එක පෙන්වයි
+                    Toast.makeText(this, "Error navigating to Login: ${e.message}", Toast.LENGTH_LONG).show()
+                    e.printStackTrace()
+                }
+            }
+        } catch (e: Exception) {
+            Toast.makeText(this, "XML ID Error: ${e.message}", Toast.LENGTH_LONG).show()
+            e.printStackTrace()
         }
     }
 }

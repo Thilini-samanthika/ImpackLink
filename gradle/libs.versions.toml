@@ -13,10 +13,13 @@ firebaseAuth = "24.1.0"
 
 retrofit = "2.9.0"
 converter-gson = "2.9.0"
-ksp = "2.1.10-1.0.30"
-room = "2.6.1"
+ksp = "2.3.4"
+room = "2.8.4"
+lifecycle = "2.6.2"
 
 [libraries]
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

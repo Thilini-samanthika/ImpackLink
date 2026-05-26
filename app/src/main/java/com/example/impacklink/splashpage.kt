@@ -9,32 +9,32 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.appcompat.widget.AppCompatButton
 
-class splashpage : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_splashpage)
+        try {
+            enableEdgeToEdge()
+            setContentView(R.layout.activity_splashpage)
 
-        val mainView = findViewById<View>(R.id.main)
-        if (mainView != null) {
-            ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
+            val mainView = findViewById<View>(R.id.main)
+            if (mainView != null) {
+                ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
+                    val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                    v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+                    insets
+                }
             }
-        }
 
-        val btnNext = findViewById<AppCompatButton>(R.id.btnNext)
-
-        btnNext.setOnClickListener {
-
-            val intent = Intent(this, GetStartedActivity::class.java)
-
-            startActivity(intent)
-
-            finish()
+            val btnNext = findViewById<AppCompatButton>(R.id.btnNext)
+            btnNext?.setOnClickListener {
+                val intent = Intent(this, GetStartedActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 }
