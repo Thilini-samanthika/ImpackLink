@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ImpackLink</string>
+    <string name="back">Back</string>
+    <string name="ngo_logo">NGO Logo</string>
+    <string name="success_image">Success Image</string>
+    <string name="ngo_icon">NGO Icon</string>
 </resources>

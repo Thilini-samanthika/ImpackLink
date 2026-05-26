@@ -12,6 +12,45 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImpackLink">
         <activity
+            android:name=".activity_v_success"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerDeleteProjectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerEditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerViewAllProjectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerViewProjectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NgoDeleteSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteProjectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SuccessPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateProjectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateProjectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NgoProfileEdit"
+            android:exported="false" />
+        <activity
+            android:name=".ngo_edit_profile"
+            android:exported="false" />
+        <activity
             android:name=".ProjectAnalysisActivity"
             android:exported="false" />
         <activity

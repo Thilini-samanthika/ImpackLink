@@ -3,36 +3,32 @@ package com.example.impacklink
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class NgoProfileActivity : AppCompatActivity() {
+class CreateProjectActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.ngo_profile)
+        setContentView(R.layout.activity_create_project)
+
+        val btnConfirmProject = findViewById<Button>(R.id.btnConfirmProject)
+        btnConfirmProject.setOnClickListener {
 
 
-        val imgHeaderIcon = findViewById<ImageView>(R.id.imgHeaderIcon)
-        imgHeaderIcon.setOnClickListener {
+            Toast.makeText(this, "Successful Create", Toast.LENGTH_SHORT).show()
+
+
+            val intent = Intent(this, NgoViewProjectsActivity::class.java)
+            startActivity(intent)
+
 
             finish()
         }
 
 
-        val btnEditProfile = findViewById<Button>(R.id.btnEditProfile)
-        btnEditProfile.setOnClickListener {
-
-            val intent = Intent(this, ProfileEditActivity::class.java)
-            startActivity(intent)
-        }
-
-
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-
-
-        bottomNavigation.selectedItemId = R.id.menu_profile
 
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -40,6 +36,7 @@ class NgoProfileActivity : AppCompatActivity() {
 
                     val intent = Intent(this, NgoDashboardActivity::class.java)
                     startActivity(intent)
+                    finish()
                     true
                 }
                 R.id.menu_reports -> {
@@ -52,10 +49,6 @@ class NgoProfileActivity : AppCompatActivity() {
 
                     val intent = Intent(this, RoleSelectionActivity::class.java)
                     startActivity(intent)
-                    true
-                }
-                R.id.menu_profile -> {
-
                     true
                 }
                 else -> false

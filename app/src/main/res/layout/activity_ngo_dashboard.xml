@@ -117,7 +117,7 @@
                     android:id="@+id/iv_bell"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@drawable/ic_bell_yellow"/>
+                    android:src="@drawable/bell_icon1"/>
 
                 <Button
                     android:id="@+id/btn_view_all"
