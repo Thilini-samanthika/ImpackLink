@@ -4,4 +4,14 @@
     <string name="ngo_logo">NGO Logo</string>
     <string name="success_image">Success Image</string>
     <string name="ngo_icon">NGO Icon</string>
+    <string name="all_projects">All Projects</string>
+    <string name="project_title">Project Title</string>
+    <string name="category_health">Category: Health</string>
+    <string name="status_active">Status: Active</string>
+    <string name="category_education">Category: Education</string>
+    <string name="status_completed">Status: Completed</string>
+    <string name="category_environment">Category: Environment</string>
+    <string name="manage_projects">Manage Projects</string>
+    <string name="add_new_project">Add New Project</string>
+    <string name="update_project">Update Project</string>
 </resources>

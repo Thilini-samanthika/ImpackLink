@@ -13,12 +13,14 @@
         android:background="#0F176B"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingHorizontal="16dp">
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="28dp"
             android:layout_height="28dp"
+            android:contentDescription="@string/back"
             android:src="@drawable/back"
             app:tint="@color/white" />
 
@@ -27,13 +29,14 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
+            android:contentDescription="@string/ngo_icon"
             android:src="@drawable/ic_ngo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="All Projects"
+            android:text="@string/all_projects"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -72,7 +75,7 @@
                         android:id="@+id/tvProjectTitle1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Project Title"
+                        android:text="@string/project_title"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -82,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Category: Health"
+                        android:text="@string/category_health"
                         android:textColor="#555555"
                         android:textSize="15sp" />
 
@@ -91,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="Status: Active"
+                        android:text="@string/status_active"
                         android:textColor="#007BFF"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -111,7 +114,7 @@
                         android:id="@+id/tvProjectTitle2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Project Title"
+                        android:text="@string/project_title"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -121,7 +124,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Category: Education"
+                        android:text="@string/category_education"
                         android:textColor="#555555"
                         android:textSize="15sp" />
 
@@ -130,7 +133,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="Status: Completed"
+                        android:text="@string/status_completed"
                         android:textColor="#28A745"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -150,7 +153,7 @@
                         android:id="@+id/tvProjectTitle3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Project Title"
+                        android:text="@string/project_title"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -160,7 +163,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Category: Environment"
+                        android:text="@string/category_environment"
                         android:textColor="#555555"
                         android:textSize="15sp" />
 
@@ -169,7 +172,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="Status: Active"
+                        android:text="@string/status_active"
                         android:textColor="#007BFF"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -188,7 +191,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="Manage Projects"
+                    android:text="@string/manage_projects"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -200,15 +203,17 @@
                     android:elevation="2dp"
                     android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="24dp">
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="24dp">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnAddNewProject"
                         android:layout_width="220dp"
                         android:layout_height="48dp"
                         android:background="@drawable/button_gradient"
-                        android:text="Add New Project"
+                        android:text="@string/add_new_project"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="15sp"
@@ -220,7 +225,7 @@
                         android:layout_height="48dp"
                         android:layout_marginTop="16dp"
                         android:background="@drawable/button_gradient"
-                        android:text="Update Project"
+                        android:text="@string/update_project"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="15sp"

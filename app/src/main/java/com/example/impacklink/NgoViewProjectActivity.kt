@@ -10,7 +10,7 @@ class NgoViewProjectActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.NgoViewProjectActivity)
+        setContentView(R.layout.ngo_view_project_activity)
 
         val ivBack = findViewById<ImageView>(R.id.ivBack)
         val btnAddNewProject = findViewById<AppCompatButton>(R.id.btnAddNewProject)
