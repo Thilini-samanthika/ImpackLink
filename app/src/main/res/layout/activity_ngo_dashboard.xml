@@ -158,91 +158,11 @@
                     android:textStyle="bold" />
             </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/row_project_1"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_dashboard_projects"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="15dp"
-                android:weightSum="10">
-                <TextView
-                    android:id="@+id/tv_project_name_1"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="5"
-                    android:background="#FFFFFF"
-                    android:text="Project A-NGO X"
-                    android:textColor="#000000"
-                    android:gravity="center_vertical"
-                    android:paddingStart="10dp"/>
-                <Button
-                    android:id="@+id/btn_delete_1"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="2.3"
-                    android:layout_marginHorizontal="4dp"
-                    android:backgroundTint="#D9534F"
-                    android:text="delete"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
-                    android:padding="0dp"
-                    android:textAllCaps="false"/>
-                <Button
-                    android:id="@+id/btn_approved_1"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="2.7"
-                    android:backgroundTint="#00A86B"
-                    android:text="Approved"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
-                    android:padding="0dp"
-                    android:textAllCaps="false"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/row_project_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="10dp"
-                android:weightSum="10">
-                <TextView
-                    android:id="@+id/tv_project_name_2"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="5"
-                    android:background="#FFFFFF"
-                    android:text="Project B-NGO Y"
-                    android:textColor="#000000"
-                    android:gravity="center_vertical"
-                    android:paddingStart="10dp"/>
-                <Button
-                    android:id="@+id/btn_delete_2"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="2.3"
-                    android:layout_marginHorizontal="4dp"
-                    android:backgroundTint="#D9534F"
-                    android:text="delete"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
-                    android:padding="0dp"
-                    android:textAllCaps="false"/>
-                <Button
-                    android:id="@+id/btn_approved_2"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="2.7"
-                    android:backgroundTint="#00A86B"
-                    android:text="Approved"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
-                    android:padding="0dp"
-                    android:textAllCaps="false"/>
-            </LinearLayout>
+                android:layout_marginTop="10dp" />
 
             <RelativeLayout
                 android:id="@+id/layout_impact_analysis_header"

@@ -3,28 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CDE6F5"> <LinearLayout
-    android:id="@+id/topBar"
-    android:layout_width="match_parent"
-    android:layout_height="65dp"
-    android:background="#0F176B"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:paddingHorizontal="20dp">
+    android:background="#CDE6F5">
 
-    <ImageView
-        android:id="@+id/ivTopBarIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@drawable/ic_ngo" /> <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="12dp"
-    android:text="Create New Project"
-    android:textColor="@color/white"
-    android:textSize="20sp"
-    android:textStyle="bold" />
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#0F176B"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
+
+        <ImageView
+            android:id="@+id/ivTopBarIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_ngo"
+            android:contentDescription="@string/ngo_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/create_new_project_title"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -42,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Project Title"
+                android:text="@string/project_title_label"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -58,12 +63,13 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:inputType="text"
+                android:hint="@string/project_title_label"
                 android:importantForAutofill="no" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Category"
+                android:text="@string/category_label"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -79,12 +85,13 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:inputType="text"
+                android:hint="@string/category_label"
                 android:importantForAutofill="no" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description"
+                android:text="@string/description_label"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -100,12 +107,13 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:inputType="text"
+                android:hint="@string/description_label"
                 android:importantForAutofill="no" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Required Volunteers"
+                android:text="@string/required_volunteers_label"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -121,12 +129,13 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:inputType="number"
+                android:hint="@string/required_volunteers_label"
                 android:importantForAutofill="no" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Budget Goal"
+                android:text="@string/budget_goal_label"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -142,6 +151,7 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:inputType="numberDecimal"
+                android:hint="@string/budget_goal_label"
                 android:importantForAutofill="no" />
 
             <LinearLayout
@@ -154,7 +164,8 @@
                     android:id="@+id/btnConfirmProject"
                     android:layout_width="240dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/button_gradient" android:text="Confirm Project"
+                    android:background="@drawable/button_gradient"
+                    android:text="@string/confirm_project_btn"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -169,7 +180,10 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_alignParentBottom="true"
-        android:background="#CDE6F5" app:itemIconSize="28dp"
+        android:background="#CDE6F5"
+        app:itemIconSize="28dp"
         app:labelVisibilityMode="unlabeled"
-        app:itemIconTint="@color/black" app:elevation="0dp"
-        app:menu="@menu/bottom_nav_three_items" /> </RelativeLayout>
+        app:itemIconTint="@color/black"
+        app:elevation="0dp"
+        app:menu="@menu/bottom_nav_three_items" />
+</RelativeLayout>
