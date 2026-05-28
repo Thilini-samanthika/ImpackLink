@@ -20,7 +20,7 @@ class CreateProjectActivity : AppCompatActivity() {
             Toast.makeText(this, "Successful Create", Toast.LENGTH_SHORT).show()
 
 
-            val intent = Intent(this, NgoViewProjectActivity::class.java)
+            val intent = Intent(this, NgoViewProjectsActivity::class.java)
             startActivity(intent)
 
 

@@ -12,6 +12,5 @@ data class UserProfile(
     val about: String,
     val role: String,
     val accountHolderName: String,
-    val accountNumber: String,
-    val profileImageUri: String? = null
+    val accountNumber: String
 )

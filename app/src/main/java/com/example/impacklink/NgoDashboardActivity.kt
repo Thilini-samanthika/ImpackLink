@@ -7,10 +7,6 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.impacklink.adapter.DashboardProjectAdapter
-import model.Project
 
 class NgoDashboardActivity : AppCompatActivity() {
 
@@ -23,11 +19,6 @@ class NgoDashboardActivity : AppCompatActivity() {
         val btnViewAll = findViewById<Button>(R.id.btn_view_all)
         val layoutAllProject = findViewById<RelativeLayout>(R.id.layout_all_project_header)
         val layoutImpactAnalysis = findViewById<RelativeLayout>(R.id.layout_impact_analysis_header)
-
-        // RecyclerView for projects
-        val rvProjects = findViewById<RecyclerView>(R.id.rv_dashboard_projects)
-        rvProjects.layoutManager = LinearLayoutManager(this)
-        rvProjects.adapter = DashboardProjectAdapter(Project.projectList)
 
         // Navigation Icons
         val ivHome = findViewById<ImageView>(R.id.ivHome)
@@ -63,7 +54,7 @@ class NgoDashboardActivity : AppCompatActivity() {
         }
 
         ivMenuGrid.setOnClickListener {
-            val intent = Intent(this, RoleSelectionActivity::class.java)
+            val intent = Intent(this, RoleSelectionActivity::class.java) // ඔයාගේ Role Selection පිටුවේ නම
             startActivity(intent)
         }
 
@@ -71,10 +62,5 @@ class NgoDashboardActivity : AppCompatActivity() {
             val intent = Intent(this, NgoProfileActivity::class.java)
             startActivity(intent)
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        findViewById<RecyclerView>(R.id.rv_dashboard_projects).adapter?.notifyDataSetChanged()
     }
 }

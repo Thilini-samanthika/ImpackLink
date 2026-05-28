@@ -34,7 +34,7 @@ class UpdateProjectActivity : AppCompatActivity() {
             Toast.makeText(this, "Successful Update", Toast.LENGTH_SHORT).show()
 
 
-            val intent = Intent(this, NgoViewProjectActivity::class.java)
+            val intent = Intent(this, NgoViewProjectsActivity::class.java)
             startActivity(intent)
 
 

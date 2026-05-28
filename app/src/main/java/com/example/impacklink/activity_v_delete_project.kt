@@ -16,7 +16,7 @@ class VolunteerDeleteProjectActivity : AppCompatActivity() {
 
         btnDelete.setOnClickListener {
             // Volunteer Specific Success Activity (or reuse NGO one for now)
-            val intent = Intent(this, NgoDeleteSuccessActivity::class.java)
+            val intent = Intent(this, vDeleteSuccessActivity::class.java)
             startActivity(intent)
             finish()
         }
