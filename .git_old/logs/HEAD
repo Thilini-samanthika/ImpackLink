@@ -1,8 +1,0 @@
-0000000000000000000000000000000000000000 57174710f733a87a798fab4b451f071a3219b001 Thilinisamanthika <thilinisadtwnika@gmail.com> 1778955785 +0530	clone: from https://github.com/Thilini-samanthika/ImpackLink.git
-57174710f733a87a798fab4b451f071a3219b001 e1cd7e456e06fbf7fc8cba645304b90da37b44e7 Thilinisamanthika <thilinisadtwnika@gmail.com> 1778957354 +0530	commit: feat: update navigation icons in NGO dashboard layout
-e1cd7e456e06fbf7fc8cba645304b90da37b44e7 b944c7a97b3d8973fbfc71c81f45d664ae946c97 Thilinisamanthika <thilinisadtwnika@gmail.com> 1779005992 +0530	commit: feat: add project analysis activity and update NGO dashboard navigation
-b944c7a97b3d8973fbfc71c81f45d664ae946c97 d179eaf46fb97d281d1d9c1d6eba2343c0e2901f Thilinisamanthika <thilinisadtwnika@gmail.com> 1779019008 +0530	commit: feat: implement Retrofit-based auth, Room notifications, and expand user registration
-d179eaf46fb97d281d1d9c1d6eba2343c0e2901f d179eaf46fb97d281d1d9c1d6eba2343c0e2901f Thilinisamanthika <thilinisadtwnika@gmail.com> 1779780233 +0530	reset: moving to HEAD
-d179eaf46fb97d281d1d9c1d6eba2343c0e2901f 488c15a5e298587936444d0b65fb5b1f6240e806 Thilinisamanthika <thilinisadtwnika@gmail.com> 1779780235 +0530	pull --ff --recurse-submodules --progress origin: Fast-forward
-488c15a5e298587936444d0b65fb5b1f6240e806 488c15a5e298587936444d0b65fb5b1f6240e806 Thilinisamanthika <thilinisadtwnika@gmail.com> 1779975412 +0530	reset: moving to HEAD
-488c15a5e298587936444d0b65fb5b1f6240e806 488c15a5e298587936444d0b65fb5b1f6240e806 Thilinisamanthika <thilinisadtwnika@gmail.com> 1779977316 +0530	reset: moving to HEAD
