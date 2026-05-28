@@ -8,4 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark_blue">#0A0E5E</color>
+    <color name="achievement_bg">#0D1B68</color>
+    <color name="achievement_header_bg">#A9D6E5</color>
+    <color name="achievement_button_bg">#00875A</color>
+    <color name="donation_bg">#D1E8F2</color>
+    <color name="donation_header">#0D1B68</color>
+    <color name="update_btn_bg">#333333</color>
+    <color name="delete_btn_bg">#BF1D1D</color>
+    <color name="primary_button_blue">#2A7B9B</color>
 </resources>
