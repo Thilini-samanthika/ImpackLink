@@ -124,20 +124,15 @@ class MainLoginActivity : AppCompatActivity() {
                             lifecycleScope.launch {
 
                                 try {
-
                                     // Save notification
-                                    val notification =
-                                        NotificationEntity(
-                                            title = "Login Successful",
-                                            description = "Successfully logged in",
-                                            role = role,
-                                            statusText = "Success",
-                                            iconType = "TICK"
-                                        )
-
-                                    database
-                                        .notificationDao()
-                                        .insert(notification)
+                                    val notification = NotificationEntity(
+                                        title = "Login Successful",
+                                        description = "Successfully logged in",
+                                        role = role,
+                                        statusText = "Success",
+                                        iconType = "TICK"
+                                    )
+                                    database.notificationDao().insert(notification)
 
                                     // Save user profile
                                     if (user != null) {
@@ -150,40 +145,35 @@ class MainLoginActivity : AppCompatActivity() {
                                             accountHolderName = user.account_holder ?: "",
                                             accountNumber = user.account_number ?: ""
                                         )
-
                                         database.userProfileDao().insertOrUpdateProfile(profile)
                                     }
 
-                                    Toast.makeText(
-                                        this@MainLoginActivity,
-                                        "Welcome ${user?.name ?: "User"}",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-
-                                    // Role selection ekata role pass karanawa
-                                    val intent =
-                                        Intent(
-                                            this@MainLoginActivity,
-                                            RoleSelectionActivity::class.java
-                                        )
-
-                                    intent.putExtra(
-                                        "role",
-                                        role
-                                    )
-
-                                    startActivity(intent)
-                                    finish()
-
                                 } catch (e: Exception) {
-
-                                    Toast.makeText(
-                                        this@MainLoginActivity,
-                                        "Database Error: ${e.message}",
-                                        Toast.LENGTH_LONG
-                                    ).show()
+                                    e.printStackTrace()
+                                    // We still proceed to navigate even if local DB save fails
                                 }
 
+                                Toast.makeText(
+                                    this@MainLoginActivity,
+                                    "Welcome ${user?.name ?: "User"} (ID: ${user?.id})",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                                // ✅ SAVE SESSION to SharedPreferences
+                                val sharedPref = getSharedPreferences("UserData", MODE_PRIVATE)
+                                sharedPref.edit()
+                                    .putInt("userId", user?.id ?: 0)
+                                    .putBoolean("isLoggedIn", true)
+                                    .putString("userRole", role)
+                                    .apply()
+
+                                println("DEBUG: Saved User ID: ${user?.id}")
+
+                                // Navigate to Role Selection Activity
+                                val intent = Intent(this@MainLoginActivity, RoleSelectionActivity::class.java)
+                                intent.putExtra("role", role)
+                                startActivity(intent)
+                                finish()
                             }
 
                         } else {

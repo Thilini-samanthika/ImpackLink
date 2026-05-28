@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,9 +15,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImpackLink"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_GOOGLE_MAPS_API_KEY_HERE" />
+
         <activity
-            android:name=".activity_v_success"
+            android:name=".CsrDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DonorDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerAchievementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerProjectMapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerTimeTrackingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityVSuccess"
             android:exported="false" />
         <activity
             android:name=".VolunteerDeleteProjectActivity"
@@ -33,7 +56,10 @@
             android:name=".VolunteerDashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".NgoDeleteSuccessActivity"
+            android:name=".DeleteSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NgoSaveProjectActivity"
             android:exported="false" />
         <activity
             android:name=".DeleteProjectActivity"
@@ -48,10 +74,7 @@
             android:name=".CreateProjectActivity"
             android:exported="false" />
         <activity
-            android:name=".NgoProfileEdit"
-            android:exported="false" />
-        <activity
-            android:name=".ngo_edit_profile"
+            android:name=".NgoProfileEditActivity"
             android:exported="false" />
         <activity
             android:name=".ProjectAnalysisActivity"
@@ -74,15 +97,16 @@
         <activity
             android:name=".RoleSelectionActivity"
             android:exported="false" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".GetStartedActivity"
             android:exported="false" />

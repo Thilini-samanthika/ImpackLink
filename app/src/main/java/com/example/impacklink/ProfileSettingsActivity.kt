@@ -27,7 +27,11 @@ class ProfileSettingsActivity : AppCompatActivity() {
         layoutLogout.setOnClickListener {
             Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(this, SplashActivity::class.java)
+            // ✅ CLEAR SESSION
+            val sharedPref = getSharedPreferences("UserData", MODE_PRIVATE)
+            sharedPref.edit().clear().apply()
+
+            val intent = Intent(this, MainLoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()

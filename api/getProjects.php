@@ -1,6 +1,14 @@
 <?php
 header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 require_once "config.php";
+
+if(empty($_GET['user_id'])){
+    echo json_encode(["status"=>"error","message"=>"User ID required"]);
+    exit;
+}
 
 $user_id = $_GET['user_id'];
 
@@ -11,7 +19,7 @@ $stmt->execute([$user_id]);
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo json_encode([
-"status"=>"success",
-"data"=>$data
+    "status"=>"success",
+    "data"=>$data
 ]);
 ?>

@@ -9,8 +9,13 @@ data class UserProfile(
     val name: String,
     val email: String,
     val mobile: String,
-    val about: String,
+    val about: String, // mapped to Description
     val role: String,
     val accountHolderName: String,
-    val accountNumber: String
+    val accountNumber: String,
+    val location: String = "",
+    val website: String = "",
+    val ngoId: String = "",
+    val positionName: String = "",
+    val profileImageUri: String? = null
 )

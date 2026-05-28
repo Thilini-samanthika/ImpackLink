@@ -8,18 +8,17 @@
     <RelativeLayout
         android:id="@+id/headerBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#0D1B68"
+        android:layout_height="65dp"
+        android:background="#0F196C"
         android:paddingHorizontal="16dp">
 
         <ImageView
             android:id="@+id/ivHeaderIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_centerVertical="true"
             android:contentDescription="@string/dashboard_header_icon_description"
-            android:src="@android:drawable/ic_menu_manage"
-            app:tint="@android:color/white" />
+            android:src="@drawable/ic_donor" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,7 +28,7 @@
             android:layout_toEndOf="@id/ivHeaderIcon"
             android:text="@string/donor_dashboard_title"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
@@ -38,233 +37,353 @@
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigation"
         android:layout_below="@id/headerBar"
-        android:padding="16dp">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvWelcome"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/welcome_message"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:contentDescription="@string/profile_avatar_description"
+                    android:src="@drawable/person"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/welcome_message"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:columnCount="2"
-                android:rowCount="2">
+                android:paddingHorizontal="10dp"
+                android:columnCount="2">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
+                    android:layout_height="110dp"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="12dp">
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/projects_count"
-                            android:textSize="20sp"
+                            android:textColor="@color/black"
+                            android:textSize="26sp"
                             android:textStyle="bold" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/projects_label" />
+                            android:text="@string/projects_label"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
+                    android:layout_height="110dp"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="12dp">
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/donors_count"
-                            android:textSize="20sp"
+                            android:textColor="@color/black"
+                            android:textSize="26sp"
                             android:textStyle="bold" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/donors_label" />
+                            android:text="@string/donors_label"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardDonationAction"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
+                    android:layout_height="110dp"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="12dp">
-                    <TextView
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="@string/donation_label"
-                        app:drawableTopCompat="@android:drawable/ic_menu_add" />
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:contentDescription="@string/donation_label"
+                            android:src="@drawable/clock"
+                            app:tint="@color/black" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/donation_label"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
+                    android:layout_height="110dp"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="12dp">
-                    <TextView
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="@string/complete_donation_label"
-                        android:textSize="11sp"
-                        app:drawableTopCompat="@android:drawable/checkbox_on_background" />
+                        android:orientation="vertical"
+                        android:padding="4dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:contentDescription="@string/complete_donation_label"
+                            android:src="@drawable/ic_document"
+                            app:tint="@color/black" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:text="@string/complete_donation_label"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </GridLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="16dp">
+
                 <TextView
                     android:id="@+id/tvDonationListTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:layout_toStartOf="@+id/ivSearch"
+                    android:layout_toStartOf="@+id/ivArrow"
                     android:text="@string/donation_list_title"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
+
                 <ImageView
-                    android:id="@+id/ivSearch"
+                    android:id="@+id/ivArrow"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:contentDescription="@string/search_icon_description"
-                    android:src="@android:drawable/ic_menu_search" />
+                    android:src="@drawable/right"
+                    app:tint="@color/black" />
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="vertical">
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="4dp"
-                    android:background="@android:color/white"
-                    android:padding="8dp">
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
                     <TextView
-                        android:id="@+id/tvProjectANgoX"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:layout_toStartOf="@+id/btnSuccess1"
-                        android:layout_marginEnd="8dp"
-                        android:text="@string/project_a_ngo_x" />
-                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="12dp"
+                        android:text="@string/project_a_ngo_x"
+                        android:textColor="@color/black" />
+
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnSuccess1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="32dp"
-                        android:layout_alignParentEnd="true"
-                        android:backgroundTint="#00875A"
-                        android:padding="0dp"
+                        android:layout_marginStart="8dp"
+                        android:background="#00A676"
                         android:text="@string/success_status"
-                        android:textSize="11sp" />
-                </RelativeLayout>
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="4dp"
-                    android:background="@android:color/white"
-                    android:padding="8dp">
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
                     <TextView
-                        android:id="@+id/tvProjectENgoW"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:layout_toStartOf="@+id/btnDonateNow"
-                        android:layout_marginEnd="8dp"
-                        android:text="@string/project_e_ngo_w" />
-                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="12dp"
+                        android:text="@string/project_e_ngo_w"
+                        android:textColor="@color/black" />
+
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnDonateNow"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="32dp"
-                        android:layout_alignParentEnd="true"
-                        android:backgroundTint="@android:color/black"
-                        android:padding="0dp"
+                        android:layout_marginStart="8dp"
+                        android:background="#333333"
                         android:text="@string/donate_now_btn"
-                        android:textSize="11sp" />
-                </RelativeLayout>
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="12dp"
+                        android:text="@string/project_a_ngo_x"
+                        android:textColor="@color/black" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSuccess2"
+                        android:layout_width="80dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="#00A676"
+                        android:text="@string/success_status"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <Button
                 android:id="@+id/btnDonateImpact"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#2A7B9B"
-                android:text="@string/donate_impact_btn" />
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/button_gradient"
+                android:text="@string/donate_impact_btn"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="65dp"
         android:layout_alignParentBottom="true"
         android:background="#D1E8F2"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/nav_home"
-            android:src="@android:drawable/ic_menu_home" />
+            android:src="@drawable/ic_home"
+            app:tint="@color/black" />
+
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/nav_history"
-            android:src="@android:drawable/ic_dialog_dialer" />
+            android:src="@drawable/ic_apps"
+            app:tint="@color/black" />
+
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/nav_settings"
-            android:src="@android:drawable/ic_menu_preferences" />
+            android:src="@drawable/ic_profile_settings"
+            app:tint="@color/black" />
     </LinearLayout>
 </RelativeLayout>

@@ -35,7 +35,8 @@ class VolunteerViewProjectActivity : AppCompatActivity() {
 
 
         btnViewAll.setOnClickListener {
-            Toast.makeText(this, "View All Projects coming soon", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, VolunteerViewAllProjectActivity::class.java)
+            startActivity(intent)
         }
 
 

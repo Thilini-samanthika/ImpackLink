@@ -58,6 +58,8 @@
     <string name="pm">PM</string>
     <string name="total_tracked_hours_prefix">Total Tracked Hours: %1$d</string>
     <string name="track_time_btn">Track time</string>
+    <string name="hour_label">Hour</string>
+    <string name="minute_label">Minute</string>
     <string name="edit_profile_title">Edit Profile</string>
     <string name="profile_avatar_description">Profile Avatar</string>
     <string name="completion_percentage">100</string>
@@ -114,4 +116,14 @@
     <string name="view_btn">view</string>
     <string name="ngo_b_placeholder">ngo b</string>
     <string name="delete_partnership_title">Delete partnership</string>
+    <string name="all_projects">All Projects</string>
+    <string name="project_title">Project Title</string>
+    <string name="category_health">Category: Health</string>
+    <string name="category_education">Category: Education</string>
+    <string name="category_environment">Category: Environment</string>
+    <string name="status_active">Status: Active</string>
+    <string name="status_completed">Status: Completed</string>
+    <string name="manage_projects">Manage Projects</string>
+    <string name="add_new_project">Add New Project</string>
+    <string name="update_project">Update Project</string>
 </resources>

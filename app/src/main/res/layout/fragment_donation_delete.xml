@@ -95,7 +95,7 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/nav_home"
-            android:src="@android:drawable/ic_menu_home" />
+            android:src="@drawable/ic_home" />
 
         <ImageButton
             android:id="@+id/navHistory"
@@ -104,7 +104,7 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/nav_history"
-            android:src="@android:drawable/ic_dialog_dialer" />
+            android:src="@drawable/ic_report" />
 
         <ImageButton
             android:id="@+id/navSettings"
@@ -113,6 +113,6 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/nav_settings"
-            android:src="@android:drawable/ic_menu_preferences" />
+            android:src="@drawable/ic_profile" />
     </LinearLayout>
 </RelativeLayout>

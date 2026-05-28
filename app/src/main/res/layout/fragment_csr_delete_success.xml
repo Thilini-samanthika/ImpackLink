@@ -11,7 +11,7 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:src="@android:drawable/back"
+        android:src="@drawable/back"
         app:tint="@android:color/white" />
 
     <ImageView
@@ -53,7 +53,7 @@
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:src="@android:drawable/ic_menu_manage"
+                android:src="@drawable/ic_ngo"
                 app:tint="#3A9AD9" />
         </RelativeLayout>
 
@@ -78,7 +78,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:drawable/dialog_holo_light_frame"
+                android:background="@drawable/rounded_card_bg"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="32dp">
