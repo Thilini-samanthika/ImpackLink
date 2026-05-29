@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.impacklink.api.AuthResponse
 import com.example.impacklink.api.RetrofitClient
+import model.Application
+import model.Project
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,6 +48,10 @@ class DeleteProjectActivity : AppCompatActivity() {
         RetrofitClient.instance.deleteProject(request).enqueue(object : Callback<AuthResponse> {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 if (response.isSuccessful && response.body()?.status == "success") {
+                    // Update Logic Link: Remove project and its applications
+                    Project.projectList.removeAll { it.id == id }
+                    Application.applicationList.removeAll { it.projectId == id }
+
                     val intent = Intent(this@DeleteProjectActivity, DeleteSuccessActivity::class.java)
                     startActivity(intent)
                     finish()

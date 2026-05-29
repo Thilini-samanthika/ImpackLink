@@ -66,6 +66,9 @@ class CreateProjectActivity : AppCompatActivity() {
             RetrofitClient.instance.createProject(project).enqueue(object : Callback<AuthResponse> {
                 override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                     if (response.isSuccessful && response.body()?.status == "success") {
+                        // Add to local logic link
+                        Project.projectList.add(project.copy(id = Project.projectList.size + 1))
+
                         Toast.makeText(this@CreateProjectActivity, "Project Created Successfully", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@CreateProjectActivity, NgoViewProjectActivity::class.java)
                         startActivity(intent)

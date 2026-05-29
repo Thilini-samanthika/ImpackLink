@@ -163,6 +163,7 @@ class MainLoginActivity : AppCompatActivity() {
                                 val sharedPref = getSharedPreferences("UserData", MODE_PRIVATE)
                                 sharedPref.edit()
                                     .putInt("userId", user?.id ?: 0)
+                                    .putString("userName", user?.name ?: "")
                                     .putBoolean("isLoggedIn", true)
                                     .putString("userRole", role)
                                     .apply()

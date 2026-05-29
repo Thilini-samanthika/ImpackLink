@@ -360,24 +360,17 @@
         android:paddingHorizontal="16dp">
 
         <ImageButton
+            android:id="@+id/navGrid"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_home"
-            android:src="@drawable/ic_home"
-            app:tint="@color/black" />
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_history"
+            android:contentDescription="Grid"
             android:src="@drawable/ic_apps"
             app:tint="@color/black" />
 
         <ImageButton
+            android:id="@+id/navSettings"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

@@ -35,4 +35,15 @@
         android:textColor="#007BFF"
         android:textSize="15sp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnApplyProject"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#CCCCCC"
+        android:text="apply"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
 </LinearLayout>

@@ -9,19 +9,34 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.impacklink.adapter.VolunteerApplicationAdapter
+import model.Application
+
 class VolunteerDashboardActivity : AppCompatActivity() {
+
+    private lateinit var rvAppliedProjectsDashboard: RecyclerView
+    private var volunteerName: String = "Volunteer"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_volunteer_dashboard)
 
+        // Load volunteer name from session
+        val sharedPref = getSharedPreferences("UserData", MODE_PRIVATE)
+        volunteerName = sharedPref.getString("userName", "Volunteer") ?: "Volunteer"
+        
+        findViewById<TextView>(R.id.txtUserName).text = getString(R.string.welcome_user, volunteerName)
+
         // --- 1. Top Bar Icons ---
         val imgUserIcon = findViewById<ImageView>(R.id.imgUserIcon)
         val imgBellIcon = findViewById<ImageView>(R.id.imgBellIcon)
 
-        // --- 2. Project Status Buttons ---
-        val btnApproved = findViewById<TextView>(R.id.btnApproved)
-        val btnPending = findViewById<TextView>(R.id.btnPending)
+        // --- 2. Applied Projects List (View Project Section) ---
+        rvAppliedProjectsDashboard = findViewById(R.id.rvAppliedProjectsDashboard)
+        rvAppliedProjectsDashboard.layoutManager = LinearLayoutManager(this)
+        updateAppliedProjects()
 
         // --- 3. Main Action Buttons ---
         val btnTimeTracking = findViewById<Button>(R.id.btnTimeTracking)
@@ -35,59 +50,41 @@ class VolunteerDashboardActivity : AppCompatActivity() {
 
         // ================= LOGIC & CLICK LISTENERS =================
 
-        // 1. User Icon -> Edit Profile Page
         imgUserIcon.setOnClickListener {
             val intent = Intent(this, ProfileEditActivity::class.java)
             startActivity(intent)
         }
 
-        // 2. Bell Icon -> Notification Center
         imgBellIcon.setOnClickListener {
             val intent = Intent(this, NotificationCenterActivity::class.java)
             startActivity(intent)
         }
 
-        // 3. Approved Button -> Display Message
-        btnApproved.setOnClickListener {
-            Toast.makeText(this, "Approved Successfully", Toast.LENGTH_SHORT).show()
-        }
-
-        // 4. Pending Button -> Display Message
-        btnPending.setOnClickListener {
-            Toast.makeText(this, "Pending", Toast.LENGTH_SHORT).show()
-        }
-
-        // 5. Time Tracking Button
         btnTimeTracking.setOnClickListener {
             val intent = Intent(this, VolunteerTimeTrackingActivity::class.java)
             startActivity(intent)
         }
 
-        // 6. Project Map Button
         btnProjectMap.setOnClickListener {
             val intent = Intent(this, VolunteerProjectMapActivity::class.java)
             startActivity(intent)
         }
 
-        // 7. View Project Arrow
         ivViewProjectArrow.setOnClickListener {
             val intent = Intent(this, VolunteerViewProjectActivity::class.java)
             startActivity(intent)
         }
 
-        // 8. Trophy Icon -> Achievement Page
         ivTrophy.setOnClickListener {
             val intent = Intent(this, VolunteerAchievementActivity::class.java)
             startActivity(intent)
         }
 
-        // --- Bottom Navigation Bar Icons Logic ---
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_reports -> {
-                    Toast.makeText(this, "Reports coming soon", Toast.LENGTH_SHORT).show()
-                    // val intent = Intent(this, ViewAllProjectActivity::class.java)
-                    // startActivity(intent)
+                    val intent = Intent(this, NotificationCenterActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.menu_apps -> {
@@ -107,5 +104,15 @@ class VolunteerDashboardActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateAppliedProjects()
+    }
+
+    private fun updateAppliedProjects() {
+        val myApps = Application.applicationList.filter { it.volunteerName == volunteerName }
+        rvAppliedProjectsDashboard.adapter = VolunteerApplicationAdapter(myApps)
     }
 }

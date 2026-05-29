@@ -21,6 +21,7 @@
     <string name="delete_btn">DELETE</string>
     <string name="donor_dashboard_title">Donor dashboard</string>
     <string name="welcome_message">Hi chamuthu</string>
+    <string name="welcome_user">hi %1$s</string>
     <string name="projects_count">03</string>
     <string name="projects_label">Projects</string>
     <string name="donors_count">05</string>

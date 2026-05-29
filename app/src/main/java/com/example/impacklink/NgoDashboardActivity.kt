@@ -10,11 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.impacklink.adapter.DashboardProjectAdapter
-import com.example.impacklink.api.RetrofitClient
-import model.ProjectResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import model.Application
 
 class NgoDashboardActivity : AppCompatActivity() {
 
@@ -79,24 +75,11 @@ class NgoDashboardActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        fetchDashboardProjects()
+        updateApplications()
     }
 
-    private fun fetchDashboardProjects() {
-        val sharedPref = getSharedPreferences("UserData", MODE_PRIVATE)
-        val userId = sharedPref.getInt("userId", 0)
-
-        RetrofitClient.instance.getProjects(userId).enqueue(object : Callback<ProjectResponse> {
-            override fun onResponse(call: Call<ProjectResponse>, response: Response<ProjectResponse>) {
-                if (response.isSuccessful) {
-                    val projects = response.body()?.projects ?: emptyList()
-                    rvDashboardProjects.adapter = DashboardProjectAdapter(projects)
-                }
-            }
-
-            override fun onFailure(call: Call<ProjectResponse>, t: Throwable) {
-                // Ignore failure for dashboard listing
-            }
-        })
+    private fun updateApplications() {
+        // Link logic: NGO views volunteer applications in "All Project" section
+        rvDashboardProjects.adapter = DashboardProjectAdapter(Application.applicationList)
     }
 }
