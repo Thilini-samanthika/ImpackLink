@@ -1,65 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0D1B68">
+    android:background="#0F176B">
 
+    <!-- Header -->
     <RelativeLayout
         android:id="@+id/headerBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/ivHeaderIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_company" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Delete Partnership?"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
+    <!-- Main Content Area -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/headerBar"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_card_bg"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/curved_white_bg"
+        android:backgroundTint="#CBE5EF"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="24dp">
 
         <ImageView
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/help" />
+            android:src="@drawable/img_2" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="40dp"
             android:text="Are you sure you want to\ndelete this project?"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:lineSpacingMultiplier="1.1" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnConfirmDeleteCsr"
+            android:layout_width="200dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="50dp"
+            android:background="#800000"
+            android:text="Delete"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnConfirmDeleteCsr"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#800000"
-            android:text="Delete" />
-
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCancelDeleteCsr"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:backgroundTint="#424242"
-            android:text="Cancel" />
+            android:layout_width="200dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="16dp"
+            android:background="#212121"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
 </RelativeLayout>

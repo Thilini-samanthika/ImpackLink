@@ -6,6 +6,22 @@
     android:background="@color/achievement_bg">
 
     <ImageView
+        android:id="@+id/ivBackButton"
+        android:layout_width="60dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="Back Button"
+        android:focusable="true"
+        android:padding="12dp"
+        android:src="@drawable/img_14"
+        app:tint="@android:color/white" />
+
+    <ImageView
         android:id="@+id/ivLogo"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -17,24 +33,40 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/ivLogo"
+        android:layout_height="412dp"
         android:layout_above="@id/bottomNavigation"
+        android:layout_below="@id/ivLogo"
         android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_card_bg"
+        android:background="@drawable/curved_background"
         android:orientation="vertical"
         android:padding="20dp">
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/achievement_header_bg"
-            android:gravity="center"
-            android:padding="12dp"
-            android:text="@string/project_map_title"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:padding="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/project_map_title"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/ivVolunteerBadge"
+                android:layout_width="122dp"
+                android:layout_height="64dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="0dp"
+                android:contentDescription="Volunteer Status Logo"
+                android:src="@drawable/img_13" />
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/ivMapIllustration"
@@ -82,40 +114,4 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:background="#D1E8F2"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_home"
-            android:src="@drawable/ic_home" />
-
-        <ImageButton
-            android:id="@+id/navHistory"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_history"
-            android:src="@drawable/ic_report" />
-
-        <ImageButton
-            android:id="@+id/navSettings"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_settings"
-            android:src="@drawable/ic_profile" />
-    </LinearLayout>
 </RelativeLayout>

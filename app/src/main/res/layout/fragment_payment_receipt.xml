@@ -3,127 +3,194 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D1E8F2">
+    android:background="#CBE5EF">
 
+    <!-- Header -->
     <RelativeLayout
         android:id="@+id/headerBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#0D1B68"
+        android:layout_height="100dp"
+        android:background="#0F176B"
         android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/ivHeaderIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_donor" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_alignTop="@id/ivHeaderIcon"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="-2dp"
+            android:layout_toEndOf="@id/ivHeaderIcon"
             android:text="Payment Receipt"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/ivHeaderIcon"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/back"
+            app:tint="@android:color/white" />
     </RelativeLayout>
 
+    <!-- Content Card -->
     <androidx.cardview.widget.CardView
+        android:id="@+id/receiptCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/headerBar"
-        android:layout_margin="20dp"
-        app:cardCornerRadius="12dp">
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:paddingBottom="40dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Donation Receipt"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CCCCCC"
-                android:layout_marginVertical="8dp"/>
+                android:layout_marginTop="12dp"
+                android:background="#999999" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="Transaction ID : #121465334"
                 android:textColor="@android:color/black"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CCCCCC"
-                android:layout_marginVertical="8dp"/>
+                android:layout_marginTop="16dp"
+                android:background="#999999" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="Charity: Helping Hands Foundation"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="15sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CCCCCC"
-                android:layout_marginVertical="8dp"/>
+                android:layout_marginTop="16dp"
+                android:background="#999999" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="Amount : Rs.100,000"
                 android:textColor="@android:color/black"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CCCCCC"
-                android:layout_marginVertical="8dp"/>
+                android:layout_marginTop="16dp"
+                android:background="#999999" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date : Jan 12, 2026" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#CCCCCC"
-                android:layout_marginVertical="8dp"/>
+                android:layout_marginTop="16dp"
+                android:text="Date : Jan 12, 2026"
+                android:textColor="@android:color/black"
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:text="Thank you for your support!"
-                android:textColor="#757575"
-                android:textSize="12sp" />
+                android:textColor="#555555"
+                android:textSize="14sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <Button
+    <!-- Download Button -->
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDownloadReceipt"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
+        android:layout_alignBottom="@id/receiptCard"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="80dp"
-        android:backgroundTint="#3A9AD9"
+        android:layout_marginBottom="-27dp"
+        android:background="@drawable/button_gradient"
+        android:drawableStart="@android:drawable/stat_sys_download"
+        android:drawablePadding="8dp"
+        android:paddingHorizontal="24dp"
         android:text="Download Receipt"
-        android:drawableStart="@android:drawable/ic_menu_save"
-        android:drawablePadding="8dp" />
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:backgroundTint="#5EA2ED" />
 
+    <!-- Bottom Navigation Mockup -->
     <LinearLayout
-        android:id="@+id/bottomNavigation"
+        android:id="@+id/bottomNavMock"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="65dp"
         android:layout_alignParentBottom="true"
-        android:background="#D1E8F2"
-        android:orientation="horizontal" />
+        android:background="#CBE5EF"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="30dp"
+        android:weightSum="3">
+
+        <ImageView
+            android:id="@+id/btnHome"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            app:tint="@android:color/black" />
+
+        <ImageView
+            android:id="@+id/btnMenu"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_menu_grid"
+            app:tint="@android:color/black" />
+
+        <ImageView
+            android:id="@+id/btnProfile"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_profile_settings"
+            app:tint="@android:color/black" />
+    </LinearLayout>
+
 </RelativeLayout>

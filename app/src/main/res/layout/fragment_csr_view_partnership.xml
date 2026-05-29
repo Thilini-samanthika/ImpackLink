@@ -3,54 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/donation_bg">
+    android:background="#CBE5EF">
 
+    <!-- Header -->
     <RelativeLayout
         android:id="@+id/headerBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/donation_header"
+        android:layout_height="110dp"
+        android:background="#0F176B"
         android:paddingHorizontal="16dp">
 
-        <ImageButton
-            android:id="@+id/btnBack"
+        <ImageView
+            android:id="@+id/ivHeaderIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/back"
-            android:src="@drawable/back"
-            app:tint="@android:color/white" />
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_company" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="8dp"
-            android:layout_toEndOf="@id/btnBack"
-            android:text="@string/view_partnership_title"
+            android:layout_alignTop="@id/ivHeaderIcon"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/ivHeaderIcon"
+            android:text="View\nPartnership"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:lineSpacingMultiplier="0.9" />
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/ivHeaderIcon"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/back"
+            app:tint="@android:color/white" />
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottomNavigation"
         android:layout_below="@id/headerBar"
-        android:padding="16dp">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
+            <!-- Partnership Card 1 -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
-                app:cardCornerRadius="8dp"
+                android:layout_marginVertical="12dp"
+                app:cardCornerRadius="12dp"
                 app:cardElevation="2dp">
 
                 <LinearLayout
@@ -58,95 +67,192 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ngo_b_placeholder"
+                        android:text="ncx b"
                         android:textColor="@android:color/black"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
-                        style="?android:attr/buttonBarStyle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/btnViewItem"
-                            style="?android:attr/buttonBarButtonStyle"
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnApply1"
                             android:layout_width="70dp"
-                            android:layout_height="36dp"
-                            android:layout_marginEnd="4dp"
-                            android:backgroundTint="@color/achievement_button_bg"
-                            android:padding="0dp"
-                            android:text="@string/view_btn"
-                            android:textSize="11sp" />
-
-                        <Button
-                            android:id="@+id/btnUpdateItem"
-                            style="?android:attr/buttonBarButtonStyle"
-                            android:layout_width="70dp"
-                            android:layout_height="36dp"
+                            android:layout_height="32dp"
                             android:layout_marginHorizontal="4dp"
-                            android:backgroundTint="#FFCC00"
-                            android:padding="0dp"
-                            android:text="@string/update_btn"
-                            android:textColor="@android:color/black"
+                            android:background="@drawable/button_green"
+                            android:text="apply"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
                             android:textSize="11sp" />
 
-                        <Button
-                            android:id="@+id/btnDeleteItem"
-                            style="?android:attr/buttonBarButtonStyle"
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnPending1"
                             android:layout_width="70dp"
-                            android:layout_height="36dp"
-                            android:layout_marginStart="4dp"
-                            android:backgroundTint="@color/delete_btn_bg"
-                            android:padding="0dp"
-                            android:text="@string/delete_btn"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:background="#D4D43D"
+                            android:text="pending"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="11sp" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnDelete1"
+                            android:layout_width="70dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:background="#E53935"
+                            android:text="delete"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
                             android:textSize="11sp" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+            <!-- Partnership Card 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="abc 1"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnApply2"
+                            android:layout_width="70dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:background="@drawable/button_green"
+                            android:text="apply"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="11sp" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnPending2"
+                            android:layout_width="70dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:background="#D4D43D"
+                            android:text="pending"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="11sp" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnDelete2"
+                            android:layout_width="70dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:background="#E53935"
+                            android:text="delete"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Partnership Card 3 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="abc 1"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnApply3"
+                            android:layout_width="70dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:background="@drawable/button_green"
+                            android:text="apply"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="11sp" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnPending3"
+                            android:layout_width="70dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:background="#D4D43D"
+                            android:text="pending"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="11sp" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnDelete3"
+                            android:layout_width="70dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="4dp"
+                            android:background="#E53935"
+                            android:text="delete"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/donation_bg"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_home"
-            android:src="@drawable/ic_home" />
-
-        <ImageButton
-            android:id="@+id/navHistory"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_history"
-            android:src="@drawable/ic_report" />
-
-        <ImageButton
-            android:id="@+id/navSettings"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_settings"
-            android:src="@drawable/ic_profile" />
-    </LinearLayout>
 </RelativeLayout>
