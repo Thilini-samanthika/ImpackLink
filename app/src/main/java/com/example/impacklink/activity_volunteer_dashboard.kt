@@ -26,6 +26,8 @@ class VolunteerDashboardActivity : AppCompatActivity() {
         // --- 3. Main Action Buttons ---
         val btnTimeTracking = findViewById<Button>(R.id.btnTimeTracking)
         val btnProjectMap = findViewById<Button>(R.id.btnProjectMap)
+        val ivViewProjectArrow = findViewById<ImageView>(R.id.ivViewProjectArrow)
+        val ivTrophy = findViewById<ImageView>(R.id.ivTrophy)
 
         // --- 4. Bottom Navigation Bar ---
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
@@ -57,16 +59,26 @@ class VolunteerDashboardActivity : AppCompatActivity() {
 
         // 5. Time Tracking Button
         btnTimeTracking.setOnClickListener {
-            Toast.makeText(this, "Time Tracking coming soon", Toast.LENGTH_SHORT).show()
-            // val intent = Intent(this, VolunteerTimeTrackingActivity::class.java)
-            // startActivity(intent)
+            val intent = Intent(this, VolunteerTimeTrackingActivity::class.java)
+            startActivity(intent)
         }
 
         // 6. Project Map Button
         btnProjectMap.setOnClickListener {
-            Toast.makeText(this, "Project Map coming soon", Toast.LENGTH_SHORT).show()
-            // val intent = Intent(this, VolunteerProjectMapActivity::class.java)
-            // startActivity(intent)
+            val intent = Intent(this, VolunteerProjectMapActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 7. View Project Arrow
+        ivViewProjectArrow.setOnClickListener {
+            val intent = Intent(this, VolunteerViewProjectActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 8. Trophy Icon -> Achievement Page
+        ivTrophy.setOnClickListener {
+            val intent = Intent(this, VolunteerAchievementActivity::class.java)
+            startActivity(intent)
         }
 
         // --- Bottom Navigation Bar Icons Logic ---

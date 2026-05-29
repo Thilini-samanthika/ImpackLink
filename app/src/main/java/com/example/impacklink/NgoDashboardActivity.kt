@@ -7,8 +7,18 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.impacklink.adapter.DashboardProjectAdapter
+import com.example.impacklink.api.RetrofitClient
+import model.ProjectResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class NgoDashboardActivity : AppCompatActivity() {
+
+    private lateinit var rvDashboardProjects: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +29,9 @@ class NgoDashboardActivity : AppCompatActivity() {
         val btnViewAll = findViewById<Button>(R.id.btn_view_all)
         val layoutAllProject = findViewById<RelativeLayout>(R.id.layout_all_project_header)
         val layoutImpactAnalysis = findViewById<RelativeLayout>(R.id.layout_impact_analysis_header)
+        
+        rvDashboardProjects = findViewById(R.id.rv_dashboard_projects)
+        rvDashboardProjects.layoutManager = LinearLayoutManager(this)
 
         // Navigation Icons
         val ivHome = findViewById<ImageView>(R.id.ivHome)
@@ -54,7 +67,7 @@ class NgoDashboardActivity : AppCompatActivity() {
         }
 
         ivMenuGrid.setOnClickListener {
-            val intent = Intent(this, RoleSelectionActivity::class.java) // ඔයාගේ Role Selection පිටුවේ නම
+            val intent = Intent(this, RoleSelectionActivity::class.java)
             startActivity(intent)
         }
 
@@ -62,5 +75,28 @@ class NgoDashboardActivity : AppCompatActivity() {
             val intent = Intent(this, NgoProfileActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        fetchDashboardProjects()
+    }
+
+    private fun fetchDashboardProjects() {
+        val sharedPref = getSharedPreferences("UserData", MODE_PRIVATE)
+        val userId = sharedPref.getInt("userId", 0)
+
+        RetrofitClient.instance.getProjects(userId).enqueue(object : Callback<ProjectResponse> {
+            override fun onResponse(call: Call<ProjectResponse>, response: Response<ProjectResponse>) {
+                if (response.isSuccessful) {
+                    val projects = response.body()?.projects ?: emptyList()
+                    rvDashboardProjects.adapter = DashboardProjectAdapter(projects)
+                }
+            }
+
+            override fun onFailure(call: Call<ProjectResponse>, t: Throwable) {
+                // Ignore failure for dashboard listing
+            }
+        })
     }
 }

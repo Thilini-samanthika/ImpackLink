@@ -6,115 +6,179 @@
     android:layout_height="match_parent"
     android:background="@color/achievement_bg">
 
-    <ImageView
-        android:id="@+id/ivLogo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/ngo_logo"
-        android:src="@drawable/app_logo"
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back"
+        android:src="@drawable/back"
         app:tint="@android:color/white" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottomNavigation"
-        android:layout_below="@id/ivLogo"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_card_bg"
-        android:fillViewport="true">
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="180dp"
+        android:layout_height="132dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/ngo_logo"
+        android:src="@drawable/app_logo" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
+    <LinearLayout
+        android:layout_width="399dp"
+        android:layout_height="473dp"
+        android:layout_below="@id/ivLogo"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/curved_background"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <RelativeLayout
+            android:layout_width="345dp"
+            android:layout_height="55dp"
+            android:background="@drawable/bg_time_header"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="12dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/achievement_header_bg"
-                android:gravity="center"
-                android:padding="12dp"
+                android:layout_centerInParent="true"
                 android:text="@string/time_tracking_title"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/ngo_icon"
+                android:src="@drawable/ic_volunteer" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:background="#EAE6EE"
+            android:background="@drawable/bg_time_inner_card"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/enter_time_label"
-                android:textSize="12sp" />
+                android:textColor="#555555"
+                android:textSize="14sp" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/etHour"
-                    android:layout_width="60dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:importantForAutofill="no"
-                    android:background="@android:drawable/editbox_background"
-                    android:gravity="center"
-                    android:hint="@string/default_minute"
-                    android:inputType="number"
-                    android:text="@string/default_hour"
-                    android:textSize="24sp" />
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/etHour"
+                        android:layout_width="100dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/bg_time_hour_box"
+                        android:gravity="center"
+                        android:hint="@string/default_minute"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="@string/default_hour"
+                        android:textColor="#4A3B91"
+                        android:textSize="36sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/hour_label"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="8dp"
+                    android:paddingHorizontal="12dp"
                     android:text="@string/time_separator"
-                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:textSize="36sp"
                     android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/etMinute"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:importantForAutofill="no"
-                    android:background="@android:drawable/editbox_background"
-                    android:gravity="center"
-                    android:hint="@string/default_minute"
-                    android:inputType="number"
-                    android:text="@string/default_minute"
-                    android:textSize="24sp" />
-
-                <RadioGroup
-                    android:id="@+id/rgAmPm"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp">
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rbAm"
+                    <EditText
+                        android:id="@+id/etMinute"
+                        android:layout_width="100dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/bg_time_minute_box"
+                        android:gravity="center"
+                        android:hint="@string/default_minute"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:text="@string/default_minute"
+                        android:textColor="@color/black"
+                        android:textSize="36sp" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/minute_label"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_ampm_selector"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvAm"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/am"
-                        android:textSize="11sp" />
+                        android:textColor="#E91E63"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
-                    <RadioButton
-                        android:id="@+id/rbPm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#CCCCCC" />
+
+                    <TextView
+                        android:id="@+id/tvPm"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/pm"
-                        android:textSize="11sp" />
-                </RadioGroup>
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <TextView
@@ -122,58 +186,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="12dp"
-                tools:text="Total Tracked Hours: 85"
+                android:layout_marginTop="20dp"
                 android:text="@string/total_tracked_hours_prefix"
                 android:textColor="@android:color/black"
-                android:textSize="12sp" />
+                android:textSize="14sp"
+                tools:text="Total Tracked Hours: 85" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btnTrackTime"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#2A7B9B"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_gradient"
             android:text="@string/track_time_btn"
-            android:textColor="@android:color/white" />
-        </LinearLayout>
-    </ScrollView>
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
 
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:background="#D1E8F2"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_home"
-            android:src="@android:drawable/ic_menu_home" />
-
-        <ImageButton
-            android:id="@+id/navHistory"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_history"
-            android:src="@android:drawable/ic_dialog_dialer" />
-
-        <ImageButton
-            android:id="@+id/navSettings"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_settings"
-            android:src="@android:drawable/ic_menu_preferences" />
     </LinearLayout>
+
 </RelativeLayout>

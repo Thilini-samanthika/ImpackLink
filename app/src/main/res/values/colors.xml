@@ -16,4 +16,5 @@
     <color name="update_btn_bg">#333333</color>
     <color name="delete_btn_bg">#BF1D1D</color>
     <color name="primary_button_blue">#2A7B9B</color>
+    <color name="pink_selected">#E91E63</color>
 </resources>
