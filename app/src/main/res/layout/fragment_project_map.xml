@@ -18,9 +18,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ivLogo"
         android:layout_above="@id/bottomNavigation"
-        android:layout_marginTop="24dp"
+        android:layout_below="@id/ivLogo"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="-22dp"
         android:background="@drawable/rounded_card_bg"
         android:orientation="vertical"
         android:padding="20dp">
@@ -57,7 +60,10 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="-24dp"
         android:background="#D1E8F2"
         android:gravity="center"
         android:orientation="horizontal">
@@ -70,15 +76,6 @@
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/nav_home"
             android:src="@drawable/ic_home" />
-
-        <ImageButton
-            android:id="@+id/navHistory"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_history"
-            android:src="@drawable/ic_report" />
 
         <ImageButton
             android:id="@+id/navSettings"

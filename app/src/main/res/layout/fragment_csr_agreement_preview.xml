@@ -3,119 +3,130 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/donation_bg">
+    android:background="#CBE5EF">
 
+    <!-- Header -->
     <RelativeLayout
         android:id="@+id/headerBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/donation_header"
+        android:layout_height="110dp"
+        android:background="#0F176B"
         android:paddingHorizontal="16dp">
 
-        <ImageButton
-            android:id="@+id/btnBack"
+        <ImageView
+            android:id="@+id/ivHeaderIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/back"
-            android:src="@drawable/back"
-            app:tint="@android:color/white" />
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_company" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="8dp"
-            android:layout_toEndOf="@id/btnBack"
-            android:text="@string/agreement_preview_title"
+            android:layout_alignTop="@id/ivHeaderIcon"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/ivHeaderIcon"
+            android:text="Agreement\nPreview"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:lineSpacingMultiplier="0.9" />
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/ivHeaderIcon"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/back"
+            app:tint="@android:color/white" />
     </RelativeLayout>
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottomNavigation"
         android:layout_below="@id/headerBar"
-        android:layout_margin="24dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp">
+        android:fillViewport="true">
 
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="20dp">
-
-            <TextView
-                android:id="@+id/tvAgreementBody"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingMultiplier="1.3"
-                android:text="Company Name: BCI\n\nNGO : Eco Green\n\nCSR Objective: Educational Support\n\nBudget: Rs.500,000\n\nDuration: 10 Months"
-                android:textColor="@android:color/black"
-                android:textSize="14sp" />
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="40dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:gravity="bottom"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="50dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@android:drawable/ic_menu_edit"
-                    app:tint="@android:color/black" />
+                android:orientation="vertical"
+                android:padding="24dp">
 
                 <TextView
+                    android:id="@+id/tvAgreementBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:text="@string/agreement_date_label"
+                    android:lineSpacingMultiplier="1.6"
+                    android:text="Company Name: BCI\n\nNGO: Eco Green\n\nCSR Objectives: Educational Support\n\nBudget: Rs.500,000\n\nDuration: 10 Months"
                     android:textColor="@android:color/black"
-                    android:textSize="12sp" />
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="sign"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="4dp"
+                            android:src="@android:drawable/ic_menu_edit"
+                            app:tint="@android:color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="date"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="2026/4/6"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+
             </LinearLayout>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/donation_bg"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_home"
-            android:src="@drawable/ic_home" />
-
-        <ImageButton
-            android:id="@+id/navHistory"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_history"
-            android:src="@drawable/ic_report" />
-
-        <ImageButton
-            android:id="@+id/navSettings"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_settings"
-            android:src="@drawable/ic_profile" />
-    </LinearLayout>
 </RelativeLayout>

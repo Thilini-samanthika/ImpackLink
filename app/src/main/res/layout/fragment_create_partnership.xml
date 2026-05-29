@@ -3,34 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/donation_bg">
+    android:background="#CBE5EF">
 
+    <!-- Header Bar -->
     <RelativeLayout
         android:id="@+id/headerBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/donation_header"
+        android:layout_height="65dp"
+        android:background="#0F176B"
         android:paddingHorizontal="16dp">
 
-        <ImageButton
-            android:id="@+id/btnBack"
+        <ImageView
+            android:id="@+id/ivHeaderIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/back"
-            android:src="@drawable/back"
-            app:tint="@android:color/white" />
+            android:src="@drawable/ic_company" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="8dp"
-            android:layout_toEndOf="@id/btnBack"
-            android:text="@string/create_partnership_title"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/ivHeaderIcon"
+            android:text="Create Partnership"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
@@ -45,122 +43,136 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="24dp">
 
             <TextView
-                android:id="@+id/tvNgoLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:labelFor="@id/spinnerNgo"
-                android:text="@string/select_ngo_label"
-                android:textSize="11sp" />
+                android:text="Select NGO"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp" />
 
             <Spinner
                 android:id="@+id/spinnerNgo"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/spinner_bg" />
+                android:layout_height="45dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/spinner_bg"
+                android:paddingHorizontal="8dp" />
 
             <TextView
-                android:id="@+id/tvCsrTypeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:labelFor="@id/spinnerCsrType"
-                android:text="@string/csr_type_label"
-                android:textSize="11sp" />
+                android:text="CSR Type"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp" />
 
             <Spinner
                 android:id="@+id/spinnerCsrType"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/spinner_bg" />
+                android:layout_height="45dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/spinner_bg"
+                android:paddingHorizontal="8dp" />
 
             <TextView
-                android:id="@+id/tvBudgetRangeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:labelFor="@id/spinnerBudgetRange"
-                android:text="@string/budget_range_label"
-                android:textSize="11sp" />
+                android:text="Budget range"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp" />
 
             <Spinner
                 android:id="@+id/spinnerBudgetRange"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/spinner_bg" />
+                android:layout_height="45dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/spinner_bg"
+                android:paddingHorizontal="8dp" />
 
             <TextView
-                android:id="@+id/tvDurationLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:labelFor="@id/etDuration"
-                android:text="@string/duration_label"
-                android:textSize="11sp" />
+                android:text="Duration"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp" />
 
             <EditText
                 android:id="@+id/etDuration"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="40dp"
                 android:background="@drawable/input_field_bg"
-                android:importantForAutofill="no"
+                android:backgroundTint="@android:color/white"
                 android:inputType="text"
-                android:padding="10dp" />
+                android:paddingHorizontal="12dp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSubmitRequest"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/primary_button_blue"
-                android:text="@string/submit_request_btn" />
+                android:layout_width="220dp"
+                android:layout_height="52dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/button_gradient"
+                android:text="Submit Request"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnEditPartnershipNav"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:backgroundTint="@color/primary_button_blue"
-                android:text="@string/edit_partnership_btn" />
+                android:layout_width="220dp"
+                android:layout_height="52dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/button_gradient"
+                android:text="Edit partnership"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
+    <!-- Bottom Navigation Mockup -->
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="65dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/donation_bg"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:background="#CBE5EF"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="30dp"
+        android:weightSum="3">
 
-        <ImageButton
-            android:id="@+id/navHome"
+        <ImageView
+            android:id="@+id/btnHome"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="32dp"
             android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_home"
-            android:src="@drawable/ic_home" />
+            android:src="@drawable/ic_home"
+            app:tint="@android:color/black" />
 
-        <ImageButton
-            android:id="@+id/navHistory"
+        <ImageView
+            android:id="@+id/btnReports"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="32dp"
             android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_history"
-            android:src="@drawable/ic_report" />
+            android:src="@drawable/ic_report"
+            app:tint="@android:color/black" />
 
-        <ImageButton
-            android:id="@+id/navSettings"
+        <ImageView
+            android:id="@+id/btnMenu"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="32dp"
             android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_settings"
-            android:src="@drawable/ic_profile" />
+            android:src="@drawable/ic_menu_grid"
+            app:tint="@android:color/black" />
     </LinearLayout>
+
 </RelativeLayout>

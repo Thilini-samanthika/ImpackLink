@@ -3,116 +3,90 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/achievement_bg">
+    android:background="#0F176B">
 
+    <!-- Header -->
     <RelativeLayout
         android:id="@+id/headerBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:paddingHorizontal="16dp">
 
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+        <ImageView
+            android:id="@+id/ivHeaderIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_centerVertical="true"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/back"
-            android:src="@drawable/back"
-            app:tint="@android:color/white" />
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_donor" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/delete_header"
+            android:text="Delete ?"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
+    <!-- Main Content Area -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="391dp"
+        android:layout_height="600dp"
         android:layout_above="@id/bottomNavigation"
         android:layout_below="@id/headerBar"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_card_bg"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/curved_white_bg"
+        android:backgroundTint="#CBE5EF"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="24dp">
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="30dp"
-            android:contentDescription="@string/delete_header"
-            android:src="@drawable/help"/>
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/img_2" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/delete_project_confirmation"
+            android:layout_marginTop="40dp"
+            android:lineSpacingMultiplier="1.1"
+            android:text="Are you sure you want to\ndelete this project?"
             android:textAlignment="center"
             android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDeleteConfirm"
+            android:layout_width="200dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="50dp"
+            android:background="#800000"
+            android:text="Delete"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnDeleteConfirm"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#800000"
-            android:text="@string/delete_confirm_btn"
-            android:textColor="@android:color/white" />
-
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnDeleteCancel"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:backgroundTint="#424242"
-            android:text="@string/cancel_btn"
-            android:textColor="@android:color/white" />
+            android:layout_width="200dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="16dp"
+            android:background="#212121"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/donation_bg"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <!-- Bottom Navigation Mockup -->
 
-        <ImageButton
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_home"
-            android:src="@drawable/ic_home" />
-
-        <ImageButton
-            android:id="@+id/navHistory"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_history"
-            android:src="@drawable/ic_report" />
-
-        <ImageButton
-            android:id="@+id/navSettings"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_settings"
-            android:src="@drawable/ic_profile" />
-    </LinearLayout>
 </RelativeLayout>
