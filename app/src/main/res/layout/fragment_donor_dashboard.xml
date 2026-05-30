@@ -14,11 +14,11 @@
 
         <ImageView
             android:id="@+id/ivHeaderIcon"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="65dp"
+            android:layout_height="49dp"
             android:layout_centerVertical="true"
             android:contentDescription="@string/dashboard_header_icon_description"
-            android:src="@drawable/ic_donor" />
+            android:src="@drawable/img_19" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,6 +51,7 @@
                 android:padding="16dp">
 
                 <ImageView
+                    android:id="@+id/ivProfileIcon"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:contentDescription="@string/profile_avatar_description"
@@ -235,7 +236,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:contentDescription="@string/search_icon_description"
-                    android:src="@drawable/right"
+                    android:src="@drawable/ic_arrow_right"
                     app:tint="@color/black" />
             </RelativeLayout>
 
@@ -352,31 +353,44 @@
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:background="#D1E8F2"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:paddingHorizontal="16dp">
+        android:paddingHorizontal="24dp">
+
+        <ImageButton
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/nav_home"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_home"
+            app:tint="@android:color/black" />
 
         <ImageButton
             android:id="@+id/navGrid"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="32dp"
             android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
+            android:background="@android:color/transparent"
             android:contentDescription="Grid"
+            android:scaleType="fitCenter"
             android:src="@drawable/ic_apps"
-            app:tint="@color/black" />
+            app:tint="@android:color/black" />
 
         <ImageButton
             android:id="@+id/navSettings"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="32dp"
             android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/nav_settings"
+            android:scaleType="fitCenter"
             android:src="@drawable/ic_profile_settings"
-            app:tint="@color/black" />
+            app:tint="@android:color/black" />
     </LinearLayout>
 </RelativeLayout>

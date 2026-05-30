@@ -15,7 +15,7 @@ class CsrViewPartnershipFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_csr_view_partnership, container, false)
 
-        view.findViewById<Button>(R.id.btnViewItem).setOnClickListener {
+        view.findViewById<Button>(R.id.btnApply1).setOnClickListener {
             Toast.makeText(context, "Opening Agreement details", Toast.LENGTH_SHORT).show()
         }
 

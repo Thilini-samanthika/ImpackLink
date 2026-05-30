@@ -15,7 +15,7 @@ class VolEditProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_vol_edit_profile, container, false)
+        val view = inflater.inflate(R.layout.fragment_donar_edit_profile, container, false)
 
         val spinner = view.findViewById<Spinner>(R.id.spinnerCountry)
         val countries = arrayOf("Sri Lanka", "United States", "United Kingdom", "Australia")

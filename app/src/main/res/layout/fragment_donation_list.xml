@@ -152,17 +152,13 @@
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
-                        <TextView
+                        <Spinner
+                            android:id="@+id/spinnerProject1"
                             android:layout_width="match_parent"
                             android:layout_height="36dp"
                             android:layout_marginTop="4dp"
                             android:background="@drawable/rounded_card_bg"
-                            android:backgroundTint="#D9D9D9"
-                            android:gravity="center_vertical"
-                            android:paddingHorizontal="12dp"
-                            android:text="@string/project_a_ngo_x"
-                            android:textColor="#666666"
-                            android:textSize="12sp" />
+                            android:backgroundTint="#D9D9D9" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -258,17 +254,13 @@
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
-                        <TextView
+                        <Spinner
+                            android:id="@+id/spinnerProject2"
                             android:layout_width="match_parent"
                             android:layout_height="36dp"
                             android:layout_marginTop="4dp"
                             android:background="@drawable/rounded_card_bg"
-                            android:backgroundTint="#D9D9D9"
-                            android:gravity="center_vertical"
-                            android:paddingHorizontal="12dp"
-                            android:text="@string/project_b_ngo_x"
-                            android:textColor="#666666"
-                            android:textSize="12sp" />
+                            android:backgroundTint="#D9D9D9" />
 
                         <TextView
                             android:layout_width="wrap_content"

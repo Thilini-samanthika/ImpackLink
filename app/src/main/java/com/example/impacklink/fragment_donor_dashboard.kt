@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
@@ -22,7 +23,17 @@ class DonorDashboardFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.btnDonateImpact).setOnClickListener {
-            Toast.makeText(context, "Loading Metrics Dashboard...", Toast.LENGTH_SHORT).show()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, DonationImpactFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        view.findViewById<ImageView>(R.id.ivProfileIcon).setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, DonarEditProfileFragment())
+                .addToBackStack(null)
+                .commit()
         }
         return view
     }
