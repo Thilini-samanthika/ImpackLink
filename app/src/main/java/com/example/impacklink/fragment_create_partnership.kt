@@ -1,5 +1,6 @@
 package com.example.impacklink
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 class CreatePartnershipFragment : Fragment() {
@@ -30,11 +30,37 @@ class CreatePartnershipFragment : Fragment() {
         spinnerBudget.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, budgetRanges)
 
         view.findViewById<Button>(R.id.btnSubmitRequest).setOnClickListener {
-            Toast.makeText(context, "Partnership Request Submitted!", Toast.LENGTH_SHORT).show()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, CsrSubmitSuccessFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        view.findViewById<View>(R.id.btnEditPartnershipNav).setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, CsrEditPartnershipFragment())
+                .addToBackStack(null)
+                .commit()
         }
 
         view.findViewById<View>(R.id.btnBack).setOnClickListener {
             parentFragmentManager.popBackStack()
+        }
+
+        view.findViewById<View>(R.id.btnHome).setOnClickListener {
+            parentFragmentManager.popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
+
+        view.findViewById<View>(R.id.btnReports).setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, CsrAgreementPreviewFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        view.findViewById<View>(R.id.btnMenu).setOnClickListener {
+            val intent = Intent(requireContext(), RoleSelectionActivity::class.java)
+            startActivity(intent)
         }
 
         return view

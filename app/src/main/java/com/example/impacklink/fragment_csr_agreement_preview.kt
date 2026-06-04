@@ -13,6 +13,13 @@ class CsrAgreementPreviewFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_csr_agreement_preview, container, false)
 
+        view.findViewById<View>(R.id.btnSubmitAgreement).setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, CsrSubmitSuccessFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
         view.findViewById<View>(R.id.btnBack).setOnClickListener {
             parentFragmentManager.popBackStack()
         }

@@ -183,7 +183,7 @@
             android:id="@+id/ivHome"
             android:layout_width="24dp"
             android:layout_height="28dp"
-            android:src="@drawable/ic_home"
+            android:src="@drawable/ic_menu_home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivProfile"
             app:layout_constraintStart_toStartOf="parent"

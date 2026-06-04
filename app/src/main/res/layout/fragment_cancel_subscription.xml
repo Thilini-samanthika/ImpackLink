@@ -111,7 +111,7 @@
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_home"
+            android:src="@drawable/ic_menu_home"
             app:tint="@android:color/black" />
 
         <ImageView

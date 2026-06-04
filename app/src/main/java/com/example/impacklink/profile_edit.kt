@@ -1,12 +1,17 @@
 package com.example.impacklink // ඔයාගේ ඇප් එකේ package නම මෙතන තියෙන්න ඕනේ
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
@@ -14,10 +19,32 @@ import kotlinx.coroutines.launch
 class ProfileEditActivity : AppCompatActivity() {
 
     private val database by lazy { AppDatabase.getDatabase(this) }
+    private var selectedImageUri: Uri? = null
+    private lateinit var profileImage: ImageView
+
+    private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let {
+            selectedImageUri = it
+            profileImage.setImageURI(it)
+        }
+    }
+
+    private val takePhotoLauncher = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
+        bitmap?.let {
+            profileImage.setImageBitmap(it)
+            // Save bitmap to a temp file to get a URI
+            val path = MediaStore.Images.Media.insertImage(contentResolver, it, "ProfileImage_${System.currentTimeMillis()}", null)
+            if (path != null) {
+                selectedImageUri = Uri.parse(path)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_edit)
+
+        profileImage = findViewById(R.id.profile_image)
 
         val etName = findViewById<EditText>(R.id.et_name)
         val etEmail = findViewById<EditText>(R.id.et_email)
@@ -37,7 +64,9 @@ class ProfileEditActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerRole.adapter = adapter
 
-
+        profileImage.setOnClickListener {
+            showImagePickerOptions()
+        }
 
         lifecycleScope.launch {
             val savedProfile = database.userProfileDao().getUserProfile()
@@ -52,6 +81,11 @@ class ProfileEditActivity : AppCompatActivity() {
 
                 etHolderName.setText(savedProfile.accountHolderName)
                 etAccountNumber.setText(savedProfile.accountNumber)
+
+                savedProfile.profileImageUri?.let {
+                    selectedImageUri = Uri.parse(it)
+                    profileImage.setImageURI(selectedImageUri)
+                }
             }
         }
 
@@ -77,7 +111,8 @@ class ProfileEditActivity : AppCompatActivity() {
                         about = about,
                         role = selectedRole,
                         accountHolderName = holderName,
-                        accountNumber = accountNumber
+                        accountNumber = accountNumber,
+                        profileImageUri = selectedImageUri?.toString()
                     )
 
                     database.userProfileDao().insertOrUpdateProfile(userProfile)
@@ -99,5 +134,18 @@ class ProfileEditActivity : AppCompatActivity() {
         ivProfileSettings.setOnClickListener {
             finish()
         }
+    }
+
+    private fun showImagePickerOptions() {
+        val options = arrayOf("Gallery", "Camera")
+        AlertDialog.Builder(this)
+            .setTitle("Select Profile Image")
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> pickImageLauncher.launch("image/*")
+                    1 -> takePhotoLauncher.launch(null)
+                }
+            }
+            .show()
     }
 }

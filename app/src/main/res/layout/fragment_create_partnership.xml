@@ -13,11 +13,22 @@
         android:background="#0F176B"
         android:paddingHorizontal="16dp">
 
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/back"
+            app:tint="@android:color/white" />
+
         <ImageView
             android:id="@+id/ivHeaderIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/btnBack"
             android:src="@drawable/ic_company" />
 
         <TextView
@@ -155,7 +166,7 @@
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_home"
+            android:src="@drawable/ic_menu_home"
             app:tint="@android:color/black" />
 
         <ImageView

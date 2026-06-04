@@ -38,7 +38,8 @@ class VolunteerEditProfileActivity : AppCompatActivity() {
         }
 
         btnDeleteProfile.setOnClickListener {
-            Toast.makeText(this, "Delete profile functionality coming soon", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, VolunteerDeleteProjectActivity::class.java)
+            startActivity(intent)
         }
 
         bottomNavigation.setOnItemSelectedListener { item ->

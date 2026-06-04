@@ -51,7 +51,7 @@ class VolunteerDashboardActivity : AppCompatActivity() {
         // ================= LOGIC & CLICK LISTENERS =================
 
         imgUserIcon.setOnClickListener {
-            val intent = Intent(this, ProfileEditActivity::class.java)
+            val intent = Intent(this, VolunteerEditProfileActivity::class.java)
             startActivity(intent)
         }
 

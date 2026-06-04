@@ -141,4 +141,11 @@
     <string name="amount_value_2">Rs .200,000.00</string>
     <string name="success_donation_title">success donation</string>
     <string name="download_receipt_btn">Download receipt</string>
+    <string name="hour_label">Hours</string>
+    <string name="minute_label">Minutes</string>
+
+    <string name="all_projects">All Projects</string>
+    <string name="manage_projects">Manage Projects</string>
+    <string name="add_new_project">Add New Project</string>
+    <string name="update_project">Update Project</string>
 </resources>

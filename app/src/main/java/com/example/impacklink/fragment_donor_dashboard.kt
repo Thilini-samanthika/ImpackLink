@@ -1,10 +1,12 @@
 package com.example.impacklink
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -22,6 +24,13 @@ class DonorDashboardFragment : Fragment() {
             Toast.makeText(context, "Opening Donation Panel", Toast.LENGTH_SHORT).show()
         }
 
+        view.findViewById<ImageView>(R.id.ivArrow).setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, DonationListFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
         view.findViewById<Button>(R.id.btnDonateImpact).setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, DonationImpactFragment())
@@ -35,6 +44,24 @@ class DonorDashboardFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+
+        // Bottom Navigation
+        view.findViewById<ImageButton>(R.id.navHome).setOnClickListener {
+            Toast.makeText(context, "You are already on the Dashboard", Toast.LENGTH_SHORT).show()
+        }
+
+        view.findViewById<ImageButton>(R.id.navGrid).setOnClickListener {
+            val intent = Intent(requireContext(), RoleSelectionActivity::class.java)
+            startActivity(intent)
+        }
+
+        view.findViewById<ImageButton>(R.id.navSettings).setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, DonarEditProfileFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
         return view
     }
 }

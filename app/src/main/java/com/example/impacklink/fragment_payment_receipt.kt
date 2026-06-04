@@ -18,6 +18,16 @@ class PaymentReceiptFragment : Fragment() {
         view.findViewById<Button>(R.id.btnDownloadReceipt).setOnClickListener {
             Toast.makeText(context, "Downloading PDF Receipt...", Toast.LENGTH_SHORT).show()
         }
+
+        view.findViewById<View>(R.id.btnBack).setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
+
+        view.findViewById<View>(R.id.btnHome).setOnClickListener {
+            // Navigate to Dashboard
+            parentFragmentManager.popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
+
         return view
     }
 }

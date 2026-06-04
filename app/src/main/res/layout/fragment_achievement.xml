@@ -9,7 +9,6 @@
         android:id="@+id/btnBack"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/back"
@@ -28,11 +27,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="492dp"
         android:layout_above="@id/bottomNavigation"
         android:layout_below="@id/ivLogo"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_card_bg"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/curved_background"
         android:fillViewport="true">
 
         <LinearLayout
@@ -42,8 +41,8 @@
             android:padding="20dp">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="343dp"
+                android:layout_height="60dp"
                 android:background="@color/achievement_header_bg"
                 android:gravity="center"
                 android:padding="12dp"
@@ -80,9 +79,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:importantForAutofill="no"
                     android:background="@drawable/input_field_bg"
                     android:hint="@string/trophy_name_hint"
+                    android:importantForAutofill="no"
                     android:inputType="text"
                     android:padding="12dp"
                     android:textSize="14sp" />
@@ -107,9 +106,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:importantForAutofill="no"
                     android:background="@drawable/input_field_bg"
                     android:hint="@string/event_name_hint"
+                    android:importantForAutofill="no"
                     android:inputType="text"
                     android:padding="12dp"
                     android:textSize="14sp" />
@@ -134,9 +133,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:importantForAutofill="no"
                     android:background="@drawable/input_field_bg"
                     android:hint="@string/place_hint"
+                    android:importantForAutofill="no"
                     android:inputType="text"
                     android:padding="12dp"
                     android:textSize="14sp" />
@@ -151,40 +150,4 @@
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/donation_bg"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_home"
-            android:src="@android:drawable/ic_menu_home" />
-
-        <ImageButton
-            android:id="@+id/navHistory"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_history"
-            android:src="@android:drawable/ic_dialog_dialer" />
-
-        <ImageButton
-            android:id="@+id/navSettings"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/nav_settings"
-            android:src="@android:drawable/ic_menu_preferences" />
-    </LinearLayout>
 </RelativeLayout>

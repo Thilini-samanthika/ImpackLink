@@ -18,6 +18,10 @@ class CsrEditPartnershipFragment : Fragment() {
         view.findViewById<Button>(R.id.btnSaveChangePartnership).setOnClickListener {
             Toast.makeText(context, "Changes Saved Successfully", Toast.LENGTH_SHORT).show()
         }
+
+        view.findViewById<View>(R.id.btnBack).setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
         return view
     }
 }

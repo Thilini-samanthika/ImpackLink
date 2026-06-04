@@ -14,7 +14,9 @@ class CsrDeleteSuccessFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_csr_delete_success, container, false)
 
         view.findViewById<View>(R.id.btnBack).setOnClickListener {
-            parentFragmentManager.popBackStack()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, CsrDashboardFragment())
+                .commit()
         }
 
         return view

@@ -14,7 +14,9 @@ class CsrSubmitSuccessFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_csr_submit_success, container, false)
 
         view.findViewById<View>(R.id.btnBack).setOnClickListener {
-            parentFragmentManager.popBackStack()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, CsrDashboardFragment())
+                .commit()
         }
 
         return view

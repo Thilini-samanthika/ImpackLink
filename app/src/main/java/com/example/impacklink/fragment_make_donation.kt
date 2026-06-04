@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import model.Project
 
 class MakeDonationFragment : Fragment() {
     override fun onCreateView(
@@ -18,8 +19,8 @@ class MakeDonationFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_make_donation, container, false)
 
         val spinner = view.findViewById<Spinner>(R.id.spinnerProjects)
-        val projects = arrayOf("Project A - NGO X", "Project B - NGO Y", "Project C - NGO Z")
-        spinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, projects)
+        val projectNames = Project.projectList.map { it.title }.toTypedArray()
+        spinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, projectNames)
 
         view.findViewById<Button>(R.id.btnPayNow).setOnClickListener {
             Toast.makeText(context, "Processing payment step...", Toast.LENGTH_SHORT).show()

@@ -16,7 +16,15 @@ class SuccessDonationFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_success_donation, container, false)
 
         view.findViewById<Button>(R.id.btnDownloadReceipt).setOnClickListener {
-            Toast.makeText(context, "Downloading PDF Receipt...", Toast.LENGTH_LONG).show()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, PaymentReceiptFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        view.findViewById<View>(R.id.btnBack).setOnClickListener {
+            // Navigate back to Donor Dashboard
+            parentFragmentManager.popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
         return view
     }
